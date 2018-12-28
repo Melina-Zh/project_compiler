@@ -149,7 +149,9 @@ bool is_match(Symbol sym) {
 			int index_value;
 			bool index_is_cons;
 			
-			expr(&index_value, &index_is_cons, index_name);
+			if (expr(&index_value, &index_is_cons, index_name) == CHAR) {
+				error("The character is not supposed in /'array/' ");
+			}
 			len = ((VarTableEntry*)entry)->get_len();
 			if (index_is_cons && (index_value < 0 || index_value >= len))
 			{
@@ -429,7 +431,9 @@ string condition(int* value,bool* is_cons) {
 	int right_value;
 	bool left_is_cons;
 	bool right_is_cons;
-	expr(value,is_cons,left_name);
+	if (expr(value, is_cons, left_name) == CHAR) {
+		error("The character is not supposed in \'condition\' ");
+	}
 	
 	switch (symbol) {
 	case GT:
@@ -450,7 +454,9 @@ string condition(int* value,bool* is_cons) {
 	left_value = *value;
 	
 
-	expr(value,is_cons,right_name);
+	if (expr(value, is_cons, right_name) == CHAR) {
+		error("The character is not supposed in \'condition\' ");
+	}
 	right_is_cons = *is_cons;
 	right_value = *value;
 	
@@ -603,7 +609,9 @@ void statement() {
 			int index_value;
 			bool index_is_cons;
 
-			expr(&index_value, &index_is_cons, index_name);
+			if (expr(&index_value, &index_is_cons, index_name) == CHAR) {
+				error("The character is not supposed in \'array\' ");
+			}
 			len = ((VarTableEntry*)entry)->get_len();
 			if (index_is_cons && (index_value < 0 || index_value >= len))
 			{
