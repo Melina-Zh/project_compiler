@@ -230,10 +230,14 @@ bool isStringChar() {
 
 bool read_char_main() {
 	current_char = fgetc(File);
-	if (current_char == EOF) {
-		return true;
+	while (current_char != EOF) {
+		if (current_char == ' ' || current_char == '\n' || current_char == '\t') {
+			current_char = fgetc(File);
+		}
+		else return false;
 	}
-	else return false;
+	return true;
+	
 }
 bool read_char() {
 	if (current_char == EOF) {
