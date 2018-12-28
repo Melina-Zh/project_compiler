@@ -1,0 +1,110 @@
+const int dd=4,ddd=6;
+const char b='d',b_2=34;
+const int zz=0;
+int y;
+char name,age;
+int fbn(int a){
+    if(a<2)
+        return (a);
+
+
+}
+int function1(int a,int b){
+ 
+	const int cc=34; 
+	int re;
+	
+	re=a+b*cc;
+	return (re);
+}
+void function2(){
+  
+    const int aa=8;
+	int c;
+	c=aa-3;
+	printf("The value of aa and c :  ");
+	printf(aa);
+	printf(" and ");
+	printf(c);
+	printf("*******");
+
+}
+
+char message(){
+    return ('h');
+}
+void main(){
+   	const int a=43;
+	int c,d,day,x,fbn_value,c_2;
+	int arr[10];
+	char string[40];
+	
+
+	c=23;
+    while(c>0)
+		c=c-1;
+    c=-45;
+    while(c<=0)
+        c=c+1;
+	arr[c]=3;
+	printf("begin:");
+	printf("*******");
+	arr[c+2]=dd;
+	printf("array value: ",arr[c]);
+	printf("*******");
+	string[c]='c';
+	scanf(day);
+	scanf(c);
+	c_2=233;
+	if(c>=100)
+		c=+c-4+(dd*b)/2;
+	if(c<100)
+        c=c_2;
+    if(c<=0){
+        c=c-2;
+        c=c-5;
+}
+	if(c==0)
+        c=-1;
+	if(c!=0)
+        c=c+1;
+    if(c)
+        c=c+1;
+
+	printf("The result of function1 is ",function1(a,c));
+	printf("*******");
+	function2();
+    fbn_value=fbn(4);
+    printf("Fbn_value=",fbn_value);
+    printf("*******");
+
+
+switch (day)
+{
+	case 00:
+		x=3;
+		
+	case 1:
+	    ;
+	    
+	default:
+		x=6;
+}
+printf("The value of x is ",x);
+printf("*******");
+switch (x)
+{
+	case 3:
+		x=7;
+		
+	case 6:
+	    ;
+	   
+	default:
+	    ;
+}
+printf("The new value of x is ",x);
+printf("*******");
+printf("The message: ",message());
+printf("*******");
+}

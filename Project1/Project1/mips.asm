@@ -1,0 +1,20 @@
+.data
+string0: .asciiz "The value of aa and c :  "
+string1: .asciiz " and "
+string2: .asciiz "*******"
+string3: .asciiz "begin:"
+string4: .asciiz "*******"
+string5: .asciiz "array value: "
+string6: .asciiz "*******"
+string7: .asciiz "The result of function1 is "
+string8: .asciiz "*******"
+string9: .asciiz "Fbn_value="
+string10: .asciiz "*******"
+string11: .asciiz "The value of x is "
+string12: .asciiz "*******"
+string13: .asciiz "The new value of x is "
+string14: .asciiz "*******"
+string15: .asciiz "The message: "
+string16: .asciiz "*******"
+.text
+     #var int y

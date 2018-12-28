@@ -1,0 +1,9 @@
+int fbn(int a){
+    if(a<2)
+        return (a);
+    return (fbn(a-1)+fbn(a-2));
+
+}
+void main(){
+    printf(fbn(5));
+}

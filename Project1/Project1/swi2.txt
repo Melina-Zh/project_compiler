@@ -1,0 +1,11 @@
+BE @t81 -1 testIfWhile_case26
+BE @t81 0 testIfWhile_case27
+GOTO testIfWhile_switch_end25
+testIfWhile_switch_end25 :
+@t88 = loop_num
+@t89 = @t88
+@t89 = @t89 ADD 1
+loop_num = @t89
+GOTO testIfWhile_while_begin23
+testIfWhile_while_end24 :
+GOTO testIfWhile_switch_end21

@@ -1,0 +1,1393 @@
+#var int count
+#array int num [] 10
+#array char letter [] 5
+#var char s
+#var int _
+#var int __
+#var int ___
+#var int __a__
+#var int _a_
+#var int judge
+#call main
+#exit
+int get_sum ()
+#para int a
+#var int b
+@t0 = judge
+@t1 = @t0
+@t1 = @t1 ADD 1
+judge = @t1
+@t2 = count
+@t3 = @t2
+@t3 = @t3 ADD 1
+count = @t3
+b = 0
+@t4 = a
+@t5 = @t4
+@t5 = @t5 NE 1
+#BZ @t5 get_sum_end_if0
+@t6 = a
+@t7 = @t6
+@t7 = @t7 SUB 1
+#push @t7
+#call get_sum
+#get @t8
+@t9 = @t8
+@t10 = @t9
+b = @t10
+@t11 = judge
+@t12 = @t11
+@t12 = @t12 ADD 1
+judge = @t12
+get_sum_end_if0 :
+@t13 = b
+@t14 = @t13
+@t15 = a
+@t14 = @t14 ADD @t15
+#ret @t14
+#ret 0
+int count_to_10 ()
+@t16 = judge
+@t17 = @t16
+@t17 = @t17 ADD 1
+judge = @t17
+#push 10
+#call get_sum
+#get @t18
+@t19 = @t18
+@t20 = @t19
+#ret @t20
+#ret 0
+char higher ()
+#para char a
+#ret 65
+#ret 0
+char prt_message ()
+@t21 = judge
+@t22 = @t21
+@t22 = @t22 ADD 1
+judge = @t22
+#printf string string0
+#ret 97
+#ret 0
+void test_global_variable ()
+#var int a
+#var int flag
+@t23 = judge
+@t24 = @t23
+@t24 = @t24 ADD 1
+judge = @t24
+a = 0
+flag = 0
+count = 2
+@t25 = 0
+letter [ @t25 ]  = 97
+@t26 = 1
+letter [ @t26 ]  = 49
+@t27 = 2
+letter [ @t27 ]  = 95
+@t28 = 3
+letter [ @t28 ]  = 43
+@t29 = 4
+letter [ @t29 ]  = 65
+@t30 = count
+@t31 = @t30
+#printf int @t31
+@t32 = 0
+@t33 = letter [ @t32 ] 
+@t34 = @t33
+@t35 = @t34
+#printf char @t35
+@t36 = count
+@t37 = @t36
+@t37 = @t37 EQ 2
+#BZ @t37 test_global_variable_end_if0
+@t38 = judge
+@t39 = @t38
+@t39 = @t39 ADD 1
+judge = @t39
+test_global_variable_end_if0 :
+@t40 = count
+@t41 = @t40
+@t41 = @t41 EQ 1
+#BZ @t41 test_global_variable_end_if1
+@t42 = judge
+@t43 = @t42
+@t43 = @t43 ADD 1
+judge = @t43
+flag = 1
+test_global_variable_end_if1 :
+@t44 = flag
+@t45 = @t44
+@t45 = @t45 EQ 0
+#BZ @t45 test_global_variable_end_if2
+@t46 = judge
+@t47 = @t46
+@t47 = @t47 ADD 1
+judge = @t47
+test_global_variable_end_if2 :
+_ = 1
+__ = 2
+___ = 3
+__a__ = 4
+_a_ = 5
+flag = 0
+@t48 = _
+@t49 = @t48
+@t49 = @t49 EQ 1
+#BZ @t49 test_global_variable_end_if3
+@t50 = judge
+@t51 = @t50
+@t51 = @t51 ADD 1
+judge = @t51
+test_global_variable_end_if3 :
+@t52 = _
+@t53 = @t52
+@t53 = @t53 EQ 0
+#BZ @t53 test_global_variable_end_if4
+flag = 1
+test_global_variable_end_if4 :
+@t54 = flag
+@t55 = @t54
+@t55 = @t55 EQ 0
+#BZ @t55 test_global_variable_end_if5
+@t56 = judge
+@t57 = @t56
+@t57 = @t57 ADD 1
+judge = @t57
+test_global_variable_end_if5 :
+flag = 0
+@t58 = __
+@t59 = @t58
+@t59 = @t59 EQ 2
+#BZ @t59 test_global_variable_end_if6
+@t60 = judge
+@t61 = @t60
+@t61 = @t61 ADD 1
+judge = @t61
+test_global_variable_end_if6 :
+@t62 = __
+@t63 = @t62
+@t63 = @t63 EQ 0
+#BZ @t63 test_global_variable_end_if7
+@t64 = judge
+@t65 = @t64
+@t65 = @t65 ADD 1
+judge = @t65
+flag = 1
+test_global_variable_end_if7 :
+@t66 = flag
+@t67 = @t66
+@t67 = @t67 EQ 0
+#BZ @t67 test_global_variable_end_if8
+@t68 = judge
+@t69 = @t68
+@t69 = @t69 ADD 1
+judge = @t69
+test_global_variable_end_if8 :
+flag = 0
+@t70 = ___
+@t71 = @t70
+@t71 = @t71 EQ 3
+#BZ @t71 test_global_variable_end_if9
+@t72 = judge
+@t73 = @t72
+@t73 = @t73 ADD 1
+judge = @t73
+test_global_variable_end_if9 :
+@t74 = ___
+@t75 = @t74
+@t75 = @t75 EQ 0
+#BZ @t75 test_global_variable_end_if10
+@t76 = judge
+@t77 = @t76
+@t77 = @t77 ADD 1
+judge = @t77
+flag = 1
+test_global_variable_end_if10 :
+@t78 = flag
+@t79 = @t78
+@t79 = @t79 EQ 0
+#BZ @t79 test_global_variable_end_if11
+@t80 = judge
+@t81 = @t80
+@t81 = @t81 ADD 1
+judge = @t81
+test_global_variable_end_if11 :
+flag = 0
+@t82 = __a__
+@t83 = @t82
+@t83 = @t83 EQ 4
+#BZ @t83 test_global_variable_end_if12
+@t84 = judge
+@t85 = @t84
+@t85 = @t85 ADD 1
+judge = @t85
+test_global_variable_end_if12 :
+@t86 = __a__
+@t87 = @t86
+@t87 = @t87 EQ 0
+#BZ @t87 test_global_variable_end_if13
+@t88 = judge
+@t89 = @t88
+@t89 = @t89 ADD 1
+judge = @t89
+flag = 1
+test_global_variable_end_if13 :
+@t90 = flag
+@t91 = @t90
+@t91 = @t91 EQ 0
+#BZ @t91 test_global_variable_end_if14
+@t92 = judge
+@t93 = @t92
+@t93 = @t93 ADD 1
+judge = @t93
+test_global_variable_end_if14 :
+flag = 0
+@t94 = _a_
+@t95 = @t94
+@t95 = @t95 EQ 5
+#BZ @t95 test_global_variable_end_if15
+@t96 = judge
+@t97 = @t96
+@t97 = @t97 ADD 1
+judge = @t97
+test_global_variable_end_if15 :
+@t98 = _a_
+@t99 = @t98
+@t99 = @t99 EQ 0
+#BZ @t99 test_global_variable_end_if16
+@t100 = judge
+@t101 = @t100
+@t101 = @t101 ADD 1
+judge = @t101
+flag = 1
+test_global_variable_end_if16 :
+@t102 = flag
+@t103 = @t102
+@t103 = @t103 EQ 0
+#BZ @t103 test_global_variable_end_if17
+@t104 = judge
+@t105 = @t104
+@t105 = @t105 ADD 1
+judge = @t105
+test_global_variable_end_if17 :
+#ret 
+#ret 
+void test_global_const ()
+#var int x
+#var char y
+#array int num [] 2
+#var int _
+_ = 100
+@t106 = _
+@t107 = @t106
+@t107 = @t107 EQ 100
+#BZ @t107 test_global_const_end_if0
+@t108 = judge
+@t109 = @t108
+@t109 = @t109 ADD 1
+judge = @t109
+test_global_const_end_if0 :
+@t110 = 0
+num [ @t110 ]  = 100
+@t111 = 1
+num [ @t111 ]  = 101
+@t112 = 0
+@t113 = num [ @t112 ] 
+@t114 = @t113
+@t115 = @t114
+@t115 = @t115 EQ 100
+#BZ @t115 test_global_const_end_if1
+@t116 = judge
+@t117 = @t116
+@t117 = @t117 ADD 1
+judge = @t117
+test_global_const_end_if1 :
+@t118 = 1
+@t119 = num [ @t118 ] 
+@t120 = @t119
+@t121 = @t120
+@t121 = @t121 EQ 101
+#BZ @t121 test_global_const_end_if2
+@t122 = judge
+@t123 = @t122
+@t123 = @t123 ADD 1
+judge = @t123
+test_global_const_end_if2 :
+@t124 = judge
+@t125 = @t124
+@t125 = @t125 ADD 1
+judge = @t125
+@t126 = judge
+@t127 = @t126
+@t127 = @t127 ADD 1
+judge = @t127
+test_global_const_end_if3 :
+@t128 = judge
+@t129 = @t128
+@t129 = @t129 ADD 1
+judge = @t129
+test_global_const_end_if4 :
+@t130 = judge
+@t131 = @t130
+@t131 = @t131 ADD 1
+judge = @t131
+test_global_const_end_if5 :
+y = 97
+@t132 = y
+@t133 = @t132
+@t133 = @t133 ADD 97
+x = @t133
+@t134 = x
+@t135 = @t134
+@t135 = @t135 EQ 194
+#BZ @t135 test_global_const_end_if6
+@t136 = judge
+@t137 = @t136
+@t137 = @t137 ADD 1
+judge = @t137
+test_global_const_end_if6 :
+#GOTO test_global_const_case8
+test_global_const_case8 :
+@t138 = judge
+@t139 = @t138
+@t139 = @t139 ADD 1
+judge = @t139
+#GOTO test_global_const_switch_end7
+test_global_const_case_over9 :
+test_global_const_default10 :
+#GOTO test_global_const_switch_end7
+test_global_const_switch_end7 :
+#GOTO test_global_const_case_over13
+test_global_const_case12 :
+@t140 = judge
+@t141 = @t140
+@t141 = @t141 ADD 1
+judge = @t141
+#GOTO test_global_const_switch_end11
+test_global_const_case_over13 :
+test_global_const_default14 :
+#GOTO test_global_const_switch_end11
+test_global_const_switch_end11 :
+x = 0
+test_global_const_while_begin15 :
+@t142 = x
+@t143 = @t142
+@t143 = @t143 LT 2
+#BZ @t143 test_global_const_while_end16
+@t144 = judge
+@t145 = @t144
+@t145 = @t145 ADD 1
+judge = @t145
+@t146 = x
+@t147 = @t146
+@t147 = @t147 ADD 1
+x = @t147
+#GOTO test_global_const_while_begin15
+test_global_const_while_end16 :
+#ret 
+void test_brackets ()
+@t148 = judge
+@t149 = @t148
+@t149 = @t149 ADD 1
+judge = @t149
+#ret 
+#ret 
+void test_compare_operator ()
+#var int x
+#var int y
+#var int flag
+x = 0
+y = 1
+flag = 0
+@t150 = x
+@t151 = @t150
+@t152 = y
+@t153 = @t152
+@t151 = @t151 LT @t153
+#BZ @t151 test_compare_operator_end_if0
+@t154 = judge
+@t155 = @t154
+@t155 = @t155 ADD 1
+judge = @t155
+test_compare_operator_end_if0 :
+@t156 = y
+@t157 = @t156
+@t158 = x
+@t159 = @t158
+@t157 = @t157 GT @t159
+#BZ @t157 test_compare_operator_end_if1
+@t160 = judge
+@t161 = @t160
+@t161 = @t161 ADD 1
+judge = @t161
+test_compare_operator_end_if1 :
+@t162 = x
+@t163 = @t162
+@t164 = y
+@t165 = @t164
+@t163 = @t163 EQ @t165
+#BZ @t163 test_compare_operator_end_if2
+@t166 = judge
+@t167 = @t166
+@t167 = @t167 ADD 1
+judge = @t167
+flag = 1
+test_compare_operator_end_if2 :
+@t168 = flag
+@t169 = @t168
+@t169 = @t169 EQ 0
+#BZ @t169 test_compare_operator_end_if3
+@t170 = judge
+@t171 = @t170
+@t171 = @t171 ADD 1
+judge = @t171
+test_compare_operator_end_if3 :
+@t172 = x
+@t173 = @t172
+@t174 = y
+@t175 = @t174
+@t173 = @t173 NE @t175
+#BZ @t173 test_compare_operator_end_if4
+@t176 = judge
+@t177 = @t176
+@t177 = @t177 ADD 1
+judge = @t177
+test_compare_operator_end_if4 :
+x = 0
+test_compare_operator_while_begin5 :
+@t178 = x
+@t179 = @t178
+@t179 = @t179 LE 1
+#BZ @t179 test_compare_operator_while_end6
+@t180 = x
+@t181 = @t180
+@t182 = y
+@t183 = @t182
+@t181 = @t181 LE @t183
+#BZ @t181 test_compare_operator_end_if7
+@t184 = judge
+@t185 = @t184
+@t185 = @t185 ADD 1
+judge = @t185
+test_compare_operator_end_if7 :
+@t186 = x
+@t187 = @t186
+@t187 = @t187 ADD 1
+x = @t187
+#GOTO test_compare_operator_while_begin5
+test_compare_operator_while_end6 :
+x = 0
+test_compare_operator_while_begin8 :
+@t188 = x
+@t189 = @t188
+@t189 = @t189 LE 1
+#BZ @t189 test_compare_operator_while_end9
+@t190 = y
+@t191 = @t190
+@t192 = x
+@t193 = @t192
+@t191 = @t191 GE @t193
+#BZ @t191 test_compare_operator_end_if10
+@t194 = judge
+@t195 = @t194
+@t195 = @t195 ADD 1
+judge = @t195
+test_compare_operator_end_if10 :
+@t196 = x
+@t197 = @t196
+@t197 = @t197 ADD 1
+x = @t197
+#GOTO test_compare_operator_while_begin8
+test_compare_operator_while_end9 :
+#ret 
+void test_expression ()
+#var int a
+#var int b
+#var char c
+#var char d
+#var char e
+#var char f
+#var char g
+a = 0
+b = 0
+c = 97
+d = 98
+e = 99
+@t198 = judge
+@t199 = @t198
+@t199 = @t199 ADD 1
+judge = @t199
+@t200 = a
+@t201 = @t200
+a = @t201
+@t202 = a
+@t203 = @t202
+@t203 = @t203 EQ 0
+#BZ @t203 test_expression_end_if0
+@t204 = judge
+@t205 = @t204
+@t205 = @t205 ADD 1
+judge = @t205
+test_expression_end_if0 :
+@t206 = a
+@t207 = 0 SUB @t206
+a = @t207
+@t208 = a
+@t209 = @t208
+@t209 = @t209 EQ 0
+#BZ @t209 test_expression_end_if1
+@t210 = judge
+@t211 = @t210
+@t211 = @t211 ADD 1
+judge = @t211
+test_expression_end_if1 :
+@t212 = c
+@t213 = @t212
+a = @t213
+@t214 = a
+@t215 = @t214
+@t215 = @t215 EQ 97
+#BZ @t215 test_expression_end_if2
+@t216 = judge
+@t217 = @t216
+@t217 = @t217 ADD 1
+judge = @t217
+test_expression_end_if2 :
+@t218 = c
+@t219 = 0 SUB @t218
+a = @t219
+@t220 = a
+@t221 = @t220
+@t221 = @t221 EQ -97
+#BZ @t221 test_expression_end_if3
+@t222 = judge
+@t223 = @t222
+@t223 = @t223 ADD 1
+judge = @t223
+test_expression_end_if3 :
+a = 3
+@t224 = a
+@t225 = @t224
+@t225 = @t225 EQ 3
+#BZ @t225 test_expression_end_if4
+@t226 = judge
+@t227 = @t226
+@t227 = @t227 ADD 1
+judge = @t227
+test_expression_end_if4 :
+a = -1
+@t228 = a
+@t229 = @t228
+@t229 = @t229 EQ -1
+#BZ @t229 test_expression_end_if5
+@t230 = judge
+@t231 = @t230
+@t231 = @t231 ADD 1
+judge = @t231
+test_expression_end_if5 :
+a = 1
+@t232 = a
+@t233 = @t232
+@t233 = @t233 EQ 1
+#BZ @t233 test_expression_end_if6
+@t234 = judge
+@t235 = @t234
+@t235 = @t235 ADD 1
+judge = @t235
+test_expression_end_if6 :
+a = 1
+@t236 = a
+@t237 = @t236
+@t237 = @t237 EQ 1
+#BZ @t237 test_expression_end_if7
+@t238 = judge
+@t239 = @t238
+@t239 = @t239 ADD 1
+judge = @t239
+test_expression_end_if7 :
+a = -1
+@t240 = a
+@t241 = @t240
+@t241 = @t241 EQ -1
+#BZ @t241 test_expression_end_if8
+@t242 = judge
+@t243 = @t242
+@t243 = @t243 ADD 1
+judge = @t243
+test_expression_end_if8 :
+a = 1
+@t244 = a
+@t245 = @t244
+@t245 = @t245 EQ 1
+#BZ @t245 test_expression_end_if9
+@t246 = judge
+@t247 = @t246
+@t247 = @t247 ADD 1
+judge = @t247
+test_expression_end_if9 :
+a = -9
+@t248 = a
+@t249 = @t248
+@t249 = @t249 EQ -9
+#BZ @t249 test_expression_end_if10
+@t250 = judge
+@t251 = @t250
+@t251 = @t251 ADD 1
+judge = @t251
+test_expression_end_if10 :
+b = 5
+@t252 = b
+@t253 = @t252
+@t254 = num [ @t253 ] 
+@t255 = @t254
+@t256 = @t255
+@t257 = b
+@t258 = @t257
+@t258 = @t258 ADD 1
+@t259 = num [ @t258 ] 
+@t260 = @t259
+@t256 = @t256 ADD @t260
+@t256 = @t256 ADD 3
+@t261 = @t256
+#call count_to_10
+#get @t262
+@t261 = @t261 MUL @t262
+@t261 = @t261 DIV 3
+@t263 = 0 SUB @t261
+@t263 = @t263 ADD 97
+@t263 = @t263 ADD 97
+@t263 = @t263 SUB 2
+@t264 = 0
+@t265 = letter [ @t264 ] 
+@t266 = @t265
+@t263 = @t263 ADD @t266
+a = @t263
+@t267 = a
+@t268 = @t267
+@t268 = @t268 EQ 33
+#BZ @t268 test_expression_end_if11
+@t269 = judge
+@t270 = @t269
+@t270 = @t270 ADD 1
+judge = @t270
+test_expression_end_if11 :
+a = 1
+b = 1
+f = 97
+g = 113
+@t271 = a
+@t272 = b
+@t273 = @t272
+@t274 = c
+@t275 = d
+@t276 = @t275
+@t277 = e
+@t278 = @t277
+@t279 = f
+@t279 = @t279 MUL g
+@t278 = @t278 ADD @t279
+@t280 = @t278
+@t276 = @t276 ADD @t280
+@t274 = @t274 MUL @t276
+@t273 = @t273 ADD @t274
+@t271 = @t271 MUL @t273
+@t281 = @t271
+a = @t281
+@t282 = judge
+@t283 = @t282
+@t284 = a
+@t284 = @t284 DIV 1024
+@t283 = @t283 ADD @t284
+judge = @t283
+#ret 
+#ret 
+void test_while ()
+#var int a
+#var int b
+b = 9
+test_while_while_begin0 :
+@t285 = b
+@t286 = @t285
+@t286 = @t286 GE 0
+#BZ @t286 test_while_while_end1
+@t287 = b
+@t288 = @t287
+@t288 = @t288 GE 5
+#BZ @t288 test_while_end_if2
+@t289 = judge
+@t290 = @t289
+@t290 = @t290 ADD 1
+judge = @t290
+test_while_end_if2 :
+@t291 = b
+@t292 = @t291
+@t292 = @t292 SUB 1
+b = @t292
+#GOTO test_while_while_begin0
+test_while_while_end1 :
+b = 0
+test_while_while_begin3 :
+@t293 = b
+@t294 = @t293
+@t294 = @t294 LE 2
+#BZ @t294 test_while_while_end4
+@t295 = b
+@t296 = @t295
+#BE @t296 0 test_while_case6
+#GOTO test_while_case_over7
+test_while_case6 :
+@t297 = judge
+@t298 = @t297
+@t298 = @t298 ADD 1
+judge = @t298
+#GOTO test_while_switch_end5
+test_while_case_over7 :
+#BE @t296 1 test_while_case8
+#GOTO test_while_case_over9
+test_while_case8 :
+@t299 = judge
+@t300 = @t299
+@t300 = @t300 ADD 1
+judge = @t300
+#GOTO test_while_switch_end5
+test_while_case_over9 :
+test_while_default10 :
+@t301 = judge
+@t302 = @t301
+@t302 = @t302 ADD 1
+judge = @t302
+#GOTO test_while_switch_end5
+test_while_switch_end5 :
+@t303 = b
+@t304 = @t303
+@t304 = @t304 ADD 1
+b = @t304
+#GOTO test_while_while_begin3
+test_while_while_end4 :
+b = 0
+a = 0
+test_while_while_begin11 :
+@t305 = a
+@t306 = @t305
+@t306 = @t306 LE 2
+#BZ @t306 test_while_while_end12
+b = 0
+test_while_while_begin13 :
+@t307 = b
+@t308 = @t307
+@t308 = @t308 LE 2
+#BZ @t308 test_while_while_end14
+@t309 = judge
+@t310 = @t309
+@t310 = @t310 ADD 1
+judge = @t310
+@t311 = b
+@t312 = @t311
+@t312 = @t312 ADD 1
+b = @t312
+#GOTO test_while_while_begin13
+test_while_while_end14 :
+@t313 = a
+@t314 = @t313
+@t314 = @t314 ADD 1
+a = @t314
+#GOTO test_while_while_begin11
+test_while_while_end12 :
+b = 0
+a = 11
+test_while_while_begin15 :
+@t315 = b
+@t316 = @t315
+@t316 = @t316 LT 10
+#BZ @t316 test_while_while_end16
+@t317 = b
+@t318 = @t317
+@t319 = b
+@t319 = @t319 MUL a
+@t320 = @t319
+num [ @t318 ]  = @t320
+@t321 = judge
+@t322 = @t321
+@t323 = b
+@t324 = @t323
+@t325 = num [ @t324 ] 
+@t326 = @t325
+@t322 = @t322 ADD @t326
+judge = @t322
+@t327 = b
+@t328 = @t327
+@t328 = @t328 ADD 1
+b = @t328
+@t329 = a
+@t330 = @t329
+@t330 = @t330 ADD 2
+a = @t330
+#GOTO test_while_while_begin15
+test_while_while_end16 :
+#ret 
+#ret 
+void test_if ()
+#var int a
+#var int flag
+#var char c
+a = 0
+flag = 0
+@t331 = judge
+@t332 = @t331
+@t332 = @t332 ADD 1
+judge = @t332
+test_if_end_if0 :
+test_if_end_if1 :
+test_if_end_if2 :
+a = 0
+test_if_while_begin3 :
+@t333 = a
+@t334 = @t333
+@t334 = @t334 LE 1
+#BZ @t334 test_if_while_end4
+@t335 = a
+@t336 = @t335
+@t336 = @t336 EQ 0
+#BZ @t336 test_if_end_if6
+@t337 = judge
+@t338 = @t337
+@t338 = @t338 ADD 1
+judge = @t338
+flag = 1
+test_if_end_if6 :
+@t339 = flag
+@t340 = @t339
+@t340 = @t340 EQ 0
+#BZ @t340 test_if_end_if7
+@t341 = judge
+@t342 = @t341
+@t342 = @t342 ADD 1
+judge = @t342
+test_if_end_if7 :
+test_if_end_if5 :
+flag = 0
+@t343 = a
+@t344 = @t343
+@t344 = @t344 ADD 1
+a = @t344
+#GOTO test_if_while_begin3
+test_if_while_end4 :
+a = 0
+test_if_while_begin9 :
+@t345 = a
+@t346 = @t345
+@t346 = @t346 LT 2
+#BZ @t346 test_if_while_end10
+@t347 = judge
+@t348 = @t347
+@t348 = @t348 ADD 1
+judge = @t348
+@t349 = a
+@t350 = @t349
+@t350 = @t350 ADD 1
+a = @t350
+#GOTO test_if_while_begin9
+test_if_while_end10 :
+test_if_end_if8 :
+a = 0
+test_if_while_begin11 :
+@t351 = a
+@t352 = @t351
+@t352 = @t352 LE 1
+#BZ @t352 test_if_while_end12
+@t353 = a
+@t354 = @t353
+#BE @t354 0 test_if_case15
+#GOTO test_if_case_over16
+test_if_case15 :
+@t355 = judge
+@t356 = @t355
+@t356 = @t356 ADD 1
+judge = @t356
+#GOTO test_if_switch_end14
+test_if_case_over16 :
+test_if_default17 :
+@t357 = judge
+@t358 = @t357
+@t358 = @t358 ADD 1
+judge = @t358
+#GOTO test_if_switch_end14
+test_if_switch_end14 :
+test_if_end_if13 :
+@t359 = a
+@t360 = @t359
+@t360 = @t360 ADD 1
+a = @t360
+#GOTO test_if_while_begin11
+test_if_while_end12 :
+flag = 0
+c = 97
+@t361 = c
+@t362 = @t361
+@t362 = @t362 EQ 97
+#BZ @t362 test_if_end_if18
+@t363 = judge
+@t364 = @t363
+@t364 = @t364 ADD 1
+judge = @t364
+test_if_end_if18 :
+@t365 = c
+@t366 = @t365
+@t366 = @t366 EQ 98
+#BZ @t366 test_if_end_if19
+@t367 = judge
+@t368 = @t367
+@t368 = @t368 ADD 1
+judge = @t368
+flag = 1
+test_if_end_if19 :
+@t369 = flag
+@t370 = @t369
+@t370 = @t370 EQ 0
+#BZ @t370 test_if_end_if20
+@t371 = judge
+@t372 = @t371
+@t372 = @t372 ADD 1
+judge = @t372
+test_if_end_if20 :
+#ret 
+#ret 
+void test_switch ()
+#var int a
+#var int b
+#var int flag
+#var int test
+#var char c
+flag = 0
+test = 0
+a = 0
+b = 0
+test_switch_while_begin0 :
+@t373 = a
+@t374 = @t373
+@t374 = @t374 LE 6
+#BZ @t374 test_switch_while_end1
+@t375 = a
+@t376 = @t375
+#BE @t376 0 test_switch_case3
+#GOTO test_switch_case_over4
+test_switch_case3 :
+@t377 = judge
+@t378 = @t377
+@t378 = @t378 ADD 1
+judge = @t378
+@t379 = 0
+num [ @t379 ]  = 3
+@t380 = 3
+#push 3
+#call get_sum
+#get @t381
+@t382 = @t381
+@t383 = @t382
+num [ @t380 ]  = @t383
+test_switch_end_if5 :
+#GOTO test_switch_end_if6
+@t384 = judge
+@t385 = @t384
+@t385 = @t385 ADD 1
+judge = @t385
+flag = 1
+test_switch_end_if6 :
+@t386 = flag
+@t387 = @t386
+@t387 = @t387 EQ 0
+#BZ @t387 test_switch_end_if7
+@t388 = judge
+@t389 = @t388
+@t389 = @t389 ADD 1
+judge = @t389
+test_switch_end_if7 :
+test = 1
+#GOTO test_switch_switch_end2
+test_switch_case_over4 :
+#BE @t376 1 test_switch_case8
+#GOTO test_switch_case_over9
+test_switch_case8 :
+@t390 = judge
+@t391 = @t390
+@t391 = @t391 ADD 1
+judge = @t391
+b = 0
+test_switch_while_begin10 :
+@t392 = b
+@t393 = @t392
+@t393 = @t393 LE 2
+#BZ @t393 test_switch_while_end11
+@t394 = judge
+@t395 = @t394
+@t395 = @t395 ADD 1
+judge = @t395
+@t396 = b
+@t397 = @t396
+@t397 = @t397 ADD 1
+b = @t397
+#GOTO test_switch_while_begin10
+test_switch_while_end11 :
+test = 1
+#GOTO test_switch_switch_end2
+test_switch_case_over9 :
+#BE @t376 2 test_switch_case12
+#GOTO test_switch_case_over13
+test_switch_case12 :
+#GOTO test_switch_switch_end2
+test_switch_case_over13 :
+test_switch_default14 :
+@t398 = judge
+@t399 = @t398
+@t399 = @t399 ADD 1
+judge = @t399
+@t400 = a
+@t400 = @t400 DIV 3
+@t401 = @t400
+#BE @t401 1 test_switch_case16
+#GOTO test_switch_case_over17
+test_switch_case16 :
+@t402 = judge
+@t403 = @t402
+@t403 = @t403 ADD 1
+judge = @t403
+test = 1
+#GOTO test_switch_switch_end15
+test_switch_case_over17 :
+test_switch_default18 :
+#GOTO test_switch_switch_end15
+test_switch_switch_end15 :
+@t404 = test
+@t405 = @t404
+@t405 = @t405 EQ 0
+#BZ @t405 test_switch_end_if19
+@t406 = judge
+@t407 = @t406
+@t407 = @t407 ADD 1
+judge = @t407
+test_switch_end_if19 :
+test = 1
+#GOTO test_switch_switch_end2
+test_switch_switch_end2 :
+@t408 = test
+@t409 = @t408
+@t409 = @t409 EQ 0
+#BZ @t409 test_switch_end_if20
+@t410 = judge
+@t411 = @t410
+@t411 = @t411 ADD 1
+judge = @t411
+test_switch_end_if20 :
+test = 0
+@t412 = a
+@t413 = @t412
+@t413 = @t413 ADD 1
+a = @t413
+#GOTO test_switch_while_begin0
+test_switch_while_end1 :
+a = 0
+test_switch_while_begin21 :
+@t414 = a
+@t415 = @t414
+@t415 = @t415 LT 3
+#BZ @t415 test_switch_while_end22
+@t416 = a
+@t417 = @t416
+@t417 = @t417 EQ 0
+#BZ @t417 test_switch_end_if23
+c = 97
+test_switch_end_if23 :
+@t418 = a
+@t419 = @t418
+@t419 = @t419 EQ 1
+#BZ @t419 test_switch_end_if24
+c = 98
+test_switch_end_if24 :
+@t420 = a
+@t421 = @t420
+@t421 = @t421 EQ 2
+#BZ @t421 test_switch_end_if25
+c = 99
+test_switch_end_if25 :
+@t422 = c
+@t423 = @t422
+#BE @t423 97 test_switch_case27
+#GOTO test_switch_case_over28
+test_switch_case27 :
+@t424 = judge
+@t425 = @t424
+@t425 = @t425 ADD 1
+judge = @t425
+#GOTO test_switch_switch_end26
+test_switch_case_over28 :
+#BE @t423 98 test_switch_case29
+#GOTO test_switch_case_over30
+test_switch_case29 :
+@t426 = judge
+@t427 = @t426
+@t427 = @t427 ADD 1
+judge = @t427
+#GOTO test_switch_switch_end26
+test_switch_case_over30 :
+test_switch_default31 :
+@t428 = judge
+@t429 = @t428
+@t429 = @t429 ADD 1
+judge = @t429
+#GOTO test_switch_switch_end26
+test_switch_switch_end26 :
+@t430 = a
+@t431 = @t430
+@t431 = @t431 ADD 1
+a = @t431
+#GOTO test_switch_while_begin21
+test_switch_while_end22 :
+a = 1
+@t432 = a
+@t433 = @t432
+#BE @t433 1 test_switch_case33
+#GOTO test_switch_case_over34
+test_switch_case33 :
+#GOTO test_switch_switch_end32
+test_switch_case_over34 :
+test_switch_switch_end32 :
+#ret 
+#ret 
+void test_function ()
+#var int a
+#var char c
+a = 11
+c = 97
+@t434 = judge
+@t435 = @t434
+@t435 = @t435 ADD 1
+judge = @t435
+@t436 = c
+@t437 = @t436
+#push @t437
+#call higher
+#get @t438
+@t439 = @t438
+@t440 = @t439
+#call count_to_10
+#get @t441
+@t442 = @t441
+@t440 = @t440 ADD @t442
+#printf int @t440
+#call prt_message
+#ret 
+#ret 
+void test_printf ()
+#var int x
+x = 1
+@t443 = judge
+@t444 = @t443
+@t444 = @t444 ADD 1
+judge = @t444
+@t445 = x
+@t446 = @t445
+#printf int @t446
+x = 5
+@t447 = x
+@t448 = @t447
+@t449 = num [ @t448 ] 
+@t450 = @t449
+@t451 = @t450
+@t452 = x
+@t453 = @t452
+@t453 = @t453 ADD 1
+@t454 = num [ @t453 ] 
+@t455 = @t454
+@t451 = @t451 ADD @t455
+@t451 = @t451 ADD 3
+@t456 = @t451
+#call count_to_10
+#get @t457
+@t456 = @t456 MUL @t457
+@t456 = @t456 DIV 3
+@t458 = 0 SUB @t456
+@t458 = @t458 ADD 97
+@t458 = @t458 ADD 97
+@t458 = @t458 SUB 2
+#printf int @t458
+#ret 
+#ret 
+void test_scanf ()
+#var int x
+#var int y
+#var int z
+#var char m
+#var char n
+#var char q
+@t459 = judge
+@t460 = @t459
+@t460 = @t460 ADD 1
+judge = @t460
+#scanf int x
+#scanf char m
+@t461 = judge
+@t462 = @t461
+@t463 = x
+@t462 = @t462 ADD @t463
+@t464 = m
+@t462 = @t462 ADD @t464
+judge = @t462
+#scanf char m
+@t465 = 3
+@t466 = m
+@t467 = @t466
+letter [ @t465 ]  = @t467
+@t468 = judge
+@t469 = @t468
+@t470 = m
+@t469 = @t469 ADD @t470
+judge = @t469
+#scanf int x
+@t471 = judge
+@t472 = @t471
+@t473 = x
+@t472 = @t472 ADD @t473
+judge = @t472
+#ret 
+#ret 
+void test_varib2 ()
+@t474 = judge
+@t475 = @t474
+@t475 = @t475 ADD 1
+judge = @t475
+@t476 = _
+@t477 = @t476
+@t477 = @t477 EQ 1
+#BZ @t477 test_varib2_end_if0
+@t478 = judge
+@t479 = @t478
+@t479 = @t479 ADD 1
+judge = @t479
+test_varib2_end_if0 :
+#ret 
+#ret 
+void test_varib ()
+#var int _
+@t480 = judge
+@t481 = @t480
+@t481 = @t481 ADD 1
+judge = @t481
+_ = 100
+@t482 = _
+@t483 = @t482
+@t483 = @t483 EQ 100
+#BZ @t483 test_varib_end_if0
+@t484 = judge
+@t485 = @t484
+@t485 = @t485 ADD 1
+judge = @t485
+test_varib_end_if0 :
+#call test_varib2
+#ret 
+#ret 
+void test_para4 ()
+#para int a
+#para int b
+#para int c
+#para int d
+#para int e
+#para int f
+#para int g
+@t486 = judge
+@t487 = @t486
+@t488 = a
+@t487 = @t487 ADD @t488
+@t489 = b
+@t487 = @t487 ADD @t489
+@t490 = c
+@t487 = @t487 ADD @t490
+@t491 = d
+@t487 = @t487 ADD @t491
+@t492 = e
+@t487 = @t487 ADD @t492
+@t493 = f
+@t487 = @t487 ADD @t493
+@t494 = g
+@t487 = @t487 ADD @t494
+judge = @t487
+#ret 
+int test_para1 ()
+#para int a
+#para int b
+@t495 = judge
+@t496 = @t495
+@t496 = @t496 ADD 1
+judge = @t496
+#ret 1
+#ret 0
+char test_para2 ()
+#para char a
+#para char b
+@t497 = judge
+@t498 = @t497
+@t498 = @t498 ADD 1
+judge = @t498
+#ret 97
+#ret 0
+void test_para3 ()
+#para char a
+#para int b
+@t499 = judge
+@t500 = @t499
+@t500 = @t500 ADD 1
+judge = @t500
+#ret 
+#ret 
+void test_para ()
+@t501 = judge
+@t502 = @t501
+@t502 = @t502 ADD 1
+judge = @t502
+#push 1
+#push 2
+#call test_para1
+#push 97
+#push 98
+#call test_para2
+#push 97
+#push 1
+#call test_para3
+#push 1
+#push 2
+#push 3
+#push 4
+#push 5
+#push 6
+#push 7
+#call test_para4
+#ret 
+#ret 
+void main ()
+#var int x
+judge = 0
+@t503 = judge
+@t504 = @t503
+@t504 = @t504 ADD 1
+judge = @t504
+x = 0
+#call test_global_variable
+#call test_global_const
+#call test_brackets
+#call test_compare_operator
+#call test_expression
+#call test_while
+#call test_if
+#call test_switch
+#call test_function
+#call test_printf
+#call test_scanf
+#call test_varib
+#call test_para
+@t505 = judge
+@t506 = @t505
+#printf string string1
+#printf int @t506
+#ret 
+#ret 

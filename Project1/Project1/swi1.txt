@@ -1,0 +1,13 @@
+testIfWhile_case15 :
+@t53 = test_if_result
+@t54 = @t53
+@t54 = @t54 ADD 1
+test_if_result = @t54
+GOTO testIfWhile_switch_end14
+testIfWhile_case16 :
+@t55 = test_if_result
+@t56 = @t55
+@t57 = loop_num
+@t56 = @t56 ADD @t57
+test_if_result = @t56
+GOTO testIfWhile_switch_end14

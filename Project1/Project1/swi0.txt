@@ -1,0 +1,47 @@
+testIfWhile_case4 :
+@t11 = test_if_result
+@t11 = @t11 MUL 10
+@t12 = 0 SUB @t11
+@t13 = 2
+@t13 = @t13 MUL loop_num
+@t12 = @t12 ADD @t13
+@t12 = @t12 ADD 117
+@t12 = @t12 SUB 98
+test_if_result = @t12
+@t14 = loop_num
+@t15 = @t14
+@t16 = test_if_result
+@t15 = @t15 SUB @t16
+@t15 = @t15 ADD 970
+@t15 = @t15 SUB 100
+@t15 = @t15 ADD 42
+@t15 = @t15 ADD 34
+@t17 = 2
+@t17 = @t17 MUL test_if_result
+@t15 = @t15 ADD @t17
+loop_num = @t15
+GOTO testIfWhile_switch_end3
+testIfWhile_default5 :
+@t18 = test_if_result
+@t18 = @t18 MUL 4
+@t19 = @t18
+@t20 = 5
+@t20 = @t20 MUL loop_num
+@t19 = @t19 ADD @t20
+@t19 = @t19 ADD 24
+@t19 = @t19 SUB 97
+@t19 = @t19 ADD 99
+test_if_result = @t19
+@t21 = loop_num
+@t22 = 0 SUB @t21
+@t23 = test_if_result
+@t22 = @t22 ADD @t23
+@t22 = @t22 ADD 388
+@t22 = @t22 SUB 1653
+@t22 = @t22 ADD 453
+@t22 = @t22 ADD 555
+@t24 = 4
+@t24 = @t24 MUL test_if_result
+@t22 = @t22 SUB @t24
+loop_num = @t22
+GOTO testIfWhile_switch_end3

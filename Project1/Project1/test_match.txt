@@ -1,0 +1,85 @@
+const int i1 = +1, i2 = 0, i3 = 0, i4 = -10010; 
+const char c1 = 'Z', c2 = '_', c3 = '1', c4 = '+', c5 = '/'; 
+
+int a, _a, a_[10010]; 
+int a1, a2;
+char c;
+char s1[10010];
+
+int max(int a, int b){ 
+	s1[--0] = c1;
+	printf(s1[0]);
+	if(a > b) return (a); 
+	b = 'a' + 4 + ( '*' + '6') * 2 - 7;
+	return (b);
+}
+
+int foo(int a, char c){
+	return (a + c - 'a');
+	printf("Out of range!");
+}
+
+int fib(int n){ 
+	if(n <= 0){
+		printf("error in fib!");
+		return (0);
+	}
+	if(n == 1){
+		return (0);
+	}
+	if(n == 2){
+		return (1);
+	} 
+	return (fib(n - 1) + fib(n - 2)); 
+}
+
+char getAlpha(int n){ 
+	char c;
+	c = '+';
+	if(n >= 0){
+		if(n <= 26){
+			c = '1'; 
+			return (c);
+		}
+	}
+	return (c);
+} 
+
+void print(){ 
+	printf("%Test print");
+	printf(" !#$%&'()*+,-./0123456789:;<=>?\n@\\nABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}");
+	return;
+}
+
+void main(){
+	int a, b;
+	int flag; 
+	printf("#Hello, c0_compiler!");
+	print(); 
+	scanf(flag);
+	switch(flag){ 
+		case 0 : {
+			scanf(a); 
+			a = foo(0, getAlpha(a));
+			printf("$The result of a: "); 
+			printf(a);
+		}
+		case 1 : {
+			scanf(a);
+			scanf(b);
+			printf(max(a, b)); 
+		}
+		case 2 : {
+			a = fib(4); 
+			printf("while begin : ", a); 	
+			while(a != 0){ 
+				a = a - 1;
+			}
+			printf("while end : ", a); 
+		}
+		default : {
+			printf("Flag error!");
+		}
+	}
+	return;
+}

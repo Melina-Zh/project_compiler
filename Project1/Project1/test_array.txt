@@ -1,0 +1,21 @@
+int array[20];
+char Array[21];
+void fun1(){
+    int i;
+    i=0;
+    while(i<10){
+    array[i]=i;
+    i=i+1;
+}
+    
+    Array[0]='\n';
+Array[2]='3';
+}
+void main(){
+    
+    fun1();
+    printf("the array1 value is ", array[2]);
+    printf("the array2 value is ",Array[0]);
+
+
+}

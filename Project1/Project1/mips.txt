@@ -1,0 +1,4304 @@
+.data
+string0: .asciiz "take"
+string1: .asciiz "from"
+string2: .asciiz "to"
+string3: .asciiz "!@\\n#$^&*()Qqaa123[];',./"
+string4: .asciiz "INPUT of func_ret_int_1:"
+string5: .asciiz "OPERATE of func_ret_int_1:"
+string6: .asciiz "************************************************"
+string7: .asciiz "Start testing recursion:"
+string8: .asciiz "Start testing global:"
+string9: .asciiz "Start testing return:"
+string10: .asciiz "Start testing I/O:"
+string11: .asciiz "Start testing assign & exp:"
+string12: .asciiz "Start testing if & while:"
+string13: .asciiz "Start testing switch:"
+string14: .asciiz "Start testing parameter:"
+.space 4
+start_label:
+.text
+la $gp, start_label
+andi $gp, $gp, 0xFFFFFFFC
+     ##array int global_int_array_1 [] 5
+     ##var int global_int_1
+     ##array char global_char_array_1 [] 5
+     ##var char global_char_1
+     ##var int global_int_2
+     ##array int global_int_array_2 [] 5
+     ##var char global_char_2
+     ##array char global_char_array_2 [] 5
+     ##array char global_char_array_3 [] 10
+     ##call main
+addi $fp, $fp, 72
+add $fp, $fp, $gp
+jal main_label
+nop
+li $v0, 10
+syscall
+     ##exit
+li $v0,10
+syscall
+     #void hanoi ()
+hanoi_label:
+     ##para int n
+lw $s0, 0($fp)
+lw $s0, -4($fp)
+     ##para char from
+lb $s1, 4($fp)
+lw $s1, -8($fp)
+     ##para char tmp
+lb $s2, 5($fp)
+lw $s2, -12($fp)
+     ##para char to
+lb $s3, 6($fp)
+lw $s3, -16($fp)
+     #@t0 = n
+lw $s4, 8($fp)
+move $s4, $s0
+     #@t1 = @t0
+lw $s5, 12($fp)
+move $s5, $s4
+     #@t1 = @t1 GT 0
+li $t0, 0
+sgt $s5, $s5, $t0
+     ##BZ @t1 hanoi_end_if0
+sw $s0, 0($fp)
+sb $s1, 4($fp)
+sb $s2, 5($fp)
+sb $s3, 6($fp)
+sw $s4, 8($fp)
+sw $s5, 12($fp)
+lw $s6, 12($fp)
+beq $s6, $0, hanoi_end_if0
+nop
+     #@t2 = n
+lw $s7, 16($fp)
+lw $s1, 0($fp)
+move $s7, $s1
+     #@t3 = @t2
+lw $s2, 20($fp)
+move $s2, $s7
+     #@t3 = @t3 SUB 1
+addi $s2, $s2, -1
+     ##push @t3
+     #@t4 = from
+lw $s3, 24($fp)
+lb $s4, 4($fp)
+move $s3, $s4
+     #@t5 = @t4
+lw $s5, 28($fp)
+move $s5, $s3
+     ##push @t5
+     #@t6 = to
+sw $s6, 12($fp)
+lw $s6, 32($fp)
+sw $s7, 16($fp)
+lb $s7, 6($fp)
+move $s6, $s7
+     #@t7 = @t6
+lw $s0, 36($fp)
+move $s0, $s6
+     ##push @t7
+     #@t8 = tmp
+sw $s1, 0($fp)
+lw $s1, 40($fp)
+sw $s2, 20($fp)
+lb $s2, 5($fp)
+move $s1, $s2
+     #@t9 = @t8
+sw $s3, 24($fp)
+lw $s3, 44($fp)
+move $s3, $s1
+     ##push @t9
+     ##call hanoi
+sw $s3, 48($fp)
+sw $s0, 52($fp)
+sw $s5, 56($fp)
+sb $s4, 4($fp)
+lw $s4, 20($fp)
+sw $s4, 60($fp)
+sw $s0, 36($fp)
+sw $s1, 40($fp)
+sb $s2, 5($fp)
+sw $s3, 44($fp)
+sw $s4, 20($fp)
+sw $s5, 28($fp)
+sw $s6, 32($fp)
+sb $s7, 6($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 64
+jal hanoi_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##printf string string0
+li $v0, 4
+la $a0, string0
+syscall
+     #@t10 = n
+lw $s5, 48($fp)
+lw $s6, 0($fp)
+move $s5, $s6
+     #@t11 = @t10
+lw $s7, 52($fp)
+move $s7, $s5
+     ##printf int @t11
+li $v0, 1
+move $a0, $s7
+syscall
+     ##printf string string1
+li $v0, 4
+la $a0, string1
+syscall
+     #@t12 = from
+lw $s0, 56($fp)
+lb $s1, 4($fp)
+move $s0, $s1
+     #@t13 = @t12
+lw $s2, 60($fp)
+move $s2, $s0
+     ##printf char @t13
+li $v0, 11
+move $a0, $s2
+syscall
+     ##printf string string2
+li $v0, 4
+la $a0, string2
+syscall
+     #@t14 = to
+lw $s3, 64($fp)
+lb $s4, 6($fp)
+move $s3, $s4
+     #@t15 = @t14
+sw $s5, 48($fp)
+lw $s5, 68($fp)
+move $s5, $s3
+     ##printf char @t15
+li $v0, 11
+move $a0, $s5
+syscall
+     #@t16 = n
+sw $s7, 52($fp)
+lw $s7, 72($fp)
+move $s7, $s6
+     #@t17 = @t16
+sw $s0, 56($fp)
+lw $s0, 76($fp)
+move $s0, $s7
+     #@t17 = @t17 SUB 1
+addi $s0, $s0, -1
+     ##push @t17
+     #@t18 = tmp
+sb $s1, 4($fp)
+lw $s1, 80($fp)
+sw $s2, 60($fp)
+lb $s2, 5($fp)
+move $s1, $s2
+     #@t19 = @t18
+sw $s3, 64($fp)
+lw $s3, 84($fp)
+move $s3, $s1
+     ##push @t19
+     #@t20 = from
+sb $s4, 6($fp)
+lw $s4, 88($fp)
+sw $s5, 68($fp)
+lb $s5, 4($fp)
+move $s4, $s5
+     #@t21 = @t20
+sw $s6, 0($fp)
+lw $s6, 92($fp)
+move $s6, $s4
+     ##push @t21
+     #@t22 = to
+sw $s7, 72($fp)
+lw $s7, 96($fp)
+sw $s0, 76($fp)
+lb $s0, 6($fp)
+move $s7, $s0
+     #@t23 = @t22
+sw $s1, 80($fp)
+lw $s1, 100($fp)
+move $s1, $s7
+     ##push @t23
+     ##call hanoi
+sw $s1, 104($fp)
+sw $s6, 108($fp)
+sw $s3, 112($fp)
+sb $s2, 5($fp)
+lw $s2, 76($fp)
+sw $s2, 116($fp)
+sb $s0, 6($fp)
+sw $s1, 100($fp)
+sw $s2, 76($fp)
+sw $s3, 84($fp)
+sw $s4, 88($fp)
+sb $s5, 4($fp)
+sw $s6, 92($fp)
+sw $s7, 96($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 120
+jal hanoi_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     #hanoi_end_if0 :
+hanoi_end_if0:
+     ##ret 
+jr $ra
+     ##ret 
+jr $ra
+     #int Fibonacci ()
+Fibonacci_label:
+     ##para int n
+lw $s3, 0($fp)
+lw $s3, -4($fp)
+     #@t24 = n
+lw $s4, 100($fp)
+move $s4, $s3
+     #@t25 = @t24
+lw $s5, 104($fp)
+move $s5, $s4
+     #@t25 = @t25 EQ 0
+li $t0, 0
+seq $s5, $s5, $t0
+     ##BZ @t25 Fibonacci_end_if0
+sw $s3, 0($fp)
+sw $s4, 100($fp)
+sw $s5, 104($fp)
+lw $s6, 104($fp)
+beq $s6, $0, Fibonacci_end_if0
+nop
+     ##ret 0
+li $v0, 0
+jr $ra
+     #Fibonacci_end_if0 :
+sw $s6, 104($fp)
+Fibonacci_end_if0:
+     #@t26 = n
+lw $s7, 108($fp)
+lw $s0, 0($fp)
+move $s7, $s0
+     #@t27 = @t26
+lw $s1, 112($fp)
+move $s1, $s7
+     #@t27 = @t27 EQ 1
+li $t0, 1
+seq $s1, $s1, $t0
+     ##BZ @t27 Fibonacci_end_if1
+sw $s0, 0($fp)
+sw $s1, 112($fp)
+sw $s7, 108($fp)
+lw $s2, 112($fp)
+beq $s2, $0, Fibonacci_end_if1
+nop
+     ##ret 1
+li $v0, 1
+jr $ra
+     #Fibonacci_end_if1 :
+sw $s2, 112($fp)
+Fibonacci_end_if1:
+     #@t28 = n
+lw $s4, 116($fp)
+lw $s5, 0($fp)
+move $s4, $s5
+     #@t29 = @t28
+lw $s6, 120($fp)
+move $s6, $s4
+     #@t29 = @t29 SUB 1
+addi $s6, $s6, -1
+     ##push @t29
+     ##call Fibonacci
+sw $s6, 124($fp)
+sw $s4, 116($fp)
+sw $s5, 0($fp)
+sw $s6, 120($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 128
+jal Fibonacci_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t30
+lw $s7, 124($fp)
+move $s7, $v0
+     #@t31 = @t30
+lw $s0, 128($fp)
+move $s0, $s7
+     #@t32 = @t31
+lw $s1, 132($fp)
+move $s1, $s0
+     #@t33 = n
+lw $s2, 136($fp)
+lw $s4, 0($fp)
+move $s2, $s4
+     #@t34 = @t33
+lw $s5, 140($fp)
+move $s5, $s2
+     #@t34 = @t34 SUB 2
+addi $s5, $s5, -2
+     ##push @t34
+     ##call Fibonacci
+sw $s5, 144($fp)
+sw $s0, 128($fp)
+sw $s1, 132($fp)
+sw $s2, 136($fp)
+sw $s4, 0($fp)
+sw $s5, 140($fp)
+sw $s7, 124($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 148
+jal Fibonacci_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t35
+lw $s6, 144($fp)
+move $s6, $v0
+     #@t36 = @t35
+lw $s7, 148($fp)
+move $s7, $s6
+     #@t32 = @t32 ADD @t36
+lw $s0, 132($fp)
+add $s0, $s0, $s7
+     ##ret @t32
+move $v0, $s0
+jr $ra
+     ##ret 0
+li $v0, 0
+jr $ra
+     #int fac ()
+sw $s0, 132($fp)
+sw $s6, 144($fp)
+sw $s7, 148($fp)
+fac_label:
+     ##para int n
+lw $s1, 0($fp)
+lw $s1, -4($fp)
+     #@t37 = n
+lw $s2, 152($fp)
+move $s2, $s1
+     #@t38 = @t37
+lw $s3, 156($fp)
+move $s3, $s2
+     #@t38 = @t38 EQ 1
+li $t0, 1
+seq $s3, $s3, $t0
+     ##BZ @t38 fac_end_if0
+sw $s1, 0($fp)
+sw $s2, 152($fp)
+sw $s3, 156($fp)
+lw $s4, 156($fp)
+beq $s4, $0, fac_end_if0
+nop
+     ##ret 1
+li $v0, 1
+jr $ra
+     #fac_end_if0 :
+sw $s4, 156($fp)
+fac_end_if0:
+     #@t39 = n
+lw $s5, 160($fp)
+lw $s6, 0($fp)
+move $s5, $s6
+     #@t40 = n
+lw $s7, 164($fp)
+move $s7, $s6
+     #@t41 = @t40
+lw $s0, 168($fp)
+move $s0, $s7
+     #@t41 = @t41 SUB 1
+addi $s0, $s0, -1
+     ##push @t41
+     ##call fac
+sw $s0, 172($fp)
+sw $s0, 168($fp)
+sw $s5, 160($fp)
+sw $s6, 0($fp)
+sw $s7, 164($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 176
+jal fac_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t42
+lw $s1, 172($fp)
+move $s1, $v0
+     #@t39 = @t39 MUL @t42
+lw $s2, 160($fp)
+mul $s2, $s2, $s1
+     #@t43 = @t39
+lw $s3, 176($fp)
+move $s3, $s2
+     ##ret @t43
+move $v0, $s3
+jr $ra
+     ##ret 0
+li $v0, 0
+jr $ra
+     #void initGlobalArray ()
+sw $s1, 172($fp)
+sw $s2, 160($fp)
+sw $s3, 176($fp)
+initGlobalArray_label:
+     #@t44 = 0
+lw $s4, 176($fp)
+li $s4, 0
+     #global_int_array_1 [ @t44 ]  = 0
+li $t0, 0
+sll $t1, $s4, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+sw $t0, ($t1)
+     #@t45 = 1
+lw $s5, 180($fp)
+li $s5, 1
+     #global_int_array_1 [ @t45 ]  = 1
+li $t0, 1
+sll $t1, $s5, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+sw $t0, ($t1)
+     #@t46 = 2
+lw $s6, 184($fp)
+li $s6, 2
+     #@t47 = 0
+lw $s7, 188($fp)
+li $s7, 0
+     #@t48 = global_int_array_1 [ @t47 ] 
+lw $s0, 192($fp)
+sll $t1, $s7, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+lw $s0, ($t1)
+     #@t49 = @t48
+lw $s1, 196($fp)
+move $s1, $s0
+     #@t50 = @t49
+lw $s2, 200($fp)
+move $s2, $s1
+     #@t51 = 1
+lw $s3, 204($fp)
+li $s3, 1
+     #@t52 = global_int_array_1 [ @t51 ] 
+sw $s4, 176($fp)
+lw $s4, 208($fp)
+sll $t1, $s3, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+lw $s4, ($t1)
+     #@t53 = @t52
+sw $s5, 180($fp)
+lw $s5, 212($fp)
+move $s5, $s4
+     #@t50 = @t50 ADD @t53
+add $s2, $s2, $s5
+     #global_int_array_1 [ @t46 ]  = @t50
+sll $t1, $s6, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+sw $s2, ($t1)
+     #@t54 = 3
+sw $s6, 184($fp)
+lw $s6, 216($fp)
+li $s6, 3
+     #@t55 = 2
+sw $s7, 188($fp)
+lw $s7, 220($fp)
+li $s7, 2
+     #@t56 = global_int_array_1 [ @t55 ] 
+sw $s0, 192($fp)
+lw $s0, 224($fp)
+sll $t1, $s7, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+lw $s0, ($t1)
+     #@t57 = @t56
+sw $s1, 196($fp)
+lw $s1, 228($fp)
+move $s1, $s0
+     #@t58 = @t57
+sw $s2, 200($fp)
+lw $s2, 232($fp)
+move $s2, $s1
+     #@t59 = 1
+sw $s3, 204($fp)
+lw $s3, 236($fp)
+li $s3, 1
+     #@t60 = global_int_array_1 [ @t59 ] 
+sw $s4, 208($fp)
+lw $s4, 240($fp)
+sll $t1, $s3, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+lw $s4, ($t1)
+     #@t61 = @t60
+sw $s5, 212($fp)
+lw $s5, 244($fp)
+move $s5, $s4
+     #@t58 = @t58 ADD @t61
+add $s2, $s2, $s5
+     #global_int_array_1 [ @t54 ]  = @t58
+sll $t1, $s6, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+sw $s2, ($t1)
+     #@t62 = 4
+sw $s6, 216($fp)
+lw $s6, 248($fp)
+li $s6, 4
+     #@t63 = 3
+sw $s7, 220($fp)
+lw $s7, 252($fp)
+li $s7, 3
+     #@t64 = global_int_array_1 [ @t63 ] 
+sw $s0, 224($fp)
+lw $s0, 256($fp)
+sll $t1, $s7, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+lw $s0, ($t1)
+     #@t65 = @t64
+sw $s1, 228($fp)
+lw $s1, 260($fp)
+move $s1, $s0
+     #@t66 = @t65
+sw $s2, 232($fp)
+lw $s2, 264($fp)
+move $s2, $s1
+     #@t67 = 2
+sw $s3, 236($fp)
+lw $s3, 268($fp)
+li $s3, 2
+     #@t68 = global_int_array_1 [ @t67 ] 
+sw $s4, 240($fp)
+lw $s4, 272($fp)
+sll $t1, $s3, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+lw $s4, ($t1)
+     #@t69 = @t68
+sw $s5, 244($fp)
+lw $s5, 276($fp)
+move $s5, $s4
+     #@t66 = @t66 ADD @t69
+add $s2, $s2, $s5
+     #global_int_array_1 [ @t62 ]  = @t66
+sll $t1, $s6, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+sw $s2, ($t1)
+     #@t70 = 0
+sw $s6, 248($fp)
+lw $s6, 280($fp)
+li $s6, 0
+     #@t71 = 1
+sw $s7, 252($fp)
+lw $s7, 284($fp)
+li $s7, 1
+     #@t72 = global_int_array_1 [ @t71 ] 
+sw $s0, 256($fp)
+lw $s0, 288($fp)
+sll $t1, $s7, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+lw $s0, ($t1)
+     #@t73 = @t72
+sw $s1, 260($fp)
+lw $s1, 292($fp)
+move $s1, $s0
+     #@t74 = @t73
+sw $s2, 264($fp)
+lw $s2, 296($fp)
+move $s2, $s1
+     #global_int_array_2 [ @t70 ]  = @t74
+sll $t1, $s6, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 36
+sw $s2, ($t1)
+     #@t75 = 1
+sw $s3, 268($fp)
+lw $s3, 300($fp)
+li $s3, 1
+     #@t76 = 0
+sw $s4, 272($fp)
+lw $s4, 304($fp)
+li $s4, 0
+     #@t77 = global_int_array_2 [ @t76 ] 
+sw $s5, 276($fp)
+lw $s5, 308($fp)
+sll $t1, $s4, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 36
+lw $s5, ($t1)
+     #@t78 = @t77
+sw $s6, 280($fp)
+lw $s6, 312($fp)
+move $s6, $s5
+     #@t79 = 2
+sw $s7, 284($fp)
+lw $s7, 316($fp)
+li $s7, 2
+     #@t80 = global_int_array_1 [ @t79 ] 
+sw $s0, 288($fp)
+lw $s0, 320($fp)
+sll $t1, $s7, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+lw $s0, ($t1)
+     #@t78 = @t78 MUL @t80
+mul $s6, $s6, $s0
+     #@t81 = @t78
+sw $s1, 292($fp)
+lw $s1, 324($fp)
+move $s1, $s6
+     #global_int_array_2 [ @t75 ]  = @t81
+sll $t1, $s3, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 36
+sw $s1, ($t1)
+     #@t82 = 2
+sw $s2, 296($fp)
+lw $s2, 328($fp)
+li $s2, 2
+     #@t83 = 1
+sw $s3, 300($fp)
+lw $s3, 332($fp)
+li $s3, 1
+     #@t84 = global_int_array_2 [ @t83 ] 
+sw $s4, 304($fp)
+lw $s4, 336($fp)
+sll $t1, $s3, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 36
+lw $s4, ($t1)
+     #@t85 = @t84
+sw $s5, 308($fp)
+lw $s5, 340($fp)
+move $s5, $s4
+     #@t86 = 3
+sw $s6, 312($fp)
+lw $s6, 344($fp)
+li $s6, 3
+     #@t87 = global_int_array_1 [ @t86 ] 
+sw $s7, 316($fp)
+lw $s7, 348($fp)
+sll $t1, $s6, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+lw $s7, ($t1)
+     #@t85 = @t85 MUL @t87
+mul $s5, $s5, $s7
+     #@t88 = @t85
+sw $s0, 320($fp)
+lw $s0, 352($fp)
+move $s0, $s5
+     #global_int_array_2 [ @t82 ]  = @t88
+sll $t1, $s2, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 36
+sw $s0, ($t1)
+     #@t89 = 3
+sw $s1, 324($fp)
+lw $s1, 356($fp)
+li $s1, 3
+     #@t90 = 2
+sw $s2, 328($fp)
+lw $s2, 360($fp)
+li $s2, 2
+     #@t91 = global_int_array_2 [ @t90 ] 
+sw $s3, 332($fp)
+lw $s3, 364($fp)
+sll $t1, $s2, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 36
+lw $s3, ($t1)
+     #@t92 = @t91
+sw $s4, 336($fp)
+lw $s4, 368($fp)
+move $s4, $s3
+     #@t93 = 4
+sw $s5, 340($fp)
+lw $s5, 372($fp)
+li $s5, 4
+     #@t94 = global_int_array_1 [ @t93 ] 
+sw $s6, 344($fp)
+lw $s6, 376($fp)
+sll $t1, $s5, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+lw $s6, ($t1)
+     #@t92 = @t92 MUL @t94
+mul $s4, $s4, $s6
+     #@t95 = @t92
+sw $s7, 348($fp)
+lw $s7, 380($fp)
+move $s7, $s4
+     #global_int_array_2 [ @t89 ]  = @t95
+sll $t1, $s1, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 36
+sw $s7, ($t1)
+     #@t96 = 4
+sw $s0, 352($fp)
+lw $s0, 384($fp)
+li $s0, 4
+     #@t97 = 3
+sw $s1, 356($fp)
+lw $s1, 388($fp)
+li $s1, 3
+     #@t98 = global_int_array_2 [ @t97 ] 
+sw $s2, 360($fp)
+lw $s2, 392($fp)
+sll $t1, $s1, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 36
+lw $s2, ($t1)
+     #@t99 = @t98
+sw $s3, 364($fp)
+lw $s3, 396($fp)
+move $s3, $s2
+     #@t100 = 4
+sw $s4, 368($fp)
+lw $s4, 400($fp)
+li $s4, 4
+     #@t101 = global_int_array_1 [ @t100 ] 
+sw $s5, 372($fp)
+lw $s5, 404($fp)
+sll $t1, $s4, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+lw $s5, ($t1)
+     #@t99 = @t99 DIV @t101
+div $s3, $s3, $s5
+     #@t102 = @t99
+sw $s6, 376($fp)
+lw $s6, 408($fp)
+move $s6, $s3
+     #global_int_array_2 [ @t96 ]  = @t102
+sll $t1, $s0, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 36
+sw $s6, ($t1)
+     #@t103 = 0
+sw $s7, 380($fp)
+lw $s7, 412($fp)
+li $s7, 0
+     #global_char_array_1 [ @t103 ]  = 97
+li $t0, 97
+add $t1, $s7, $gp
+addi $t1, $t1, 24
+sb $t0, ($t1)
+     #@t104 = 1
+sw $s0, 384($fp)
+lw $s0, 416($fp)
+li $s0, 1
+     #global_char_array_1 [ @t104 ]  = 65
+li $t0, 65
+add $t1, $s0, $gp
+addi $t1, $t1, 24
+sb $t0, ($t1)
+     #@t105 = 2
+sw $s1, 388($fp)
+lw $s1, 420($fp)
+li $s1, 2
+     #global_char_array_1 [ @t105 ]  = 122
+li $t0, 122
+add $t1, $s1, $gp
+addi $t1, $t1, 24
+sb $t0, ($t1)
+     #@t106 = 3
+sw $s2, 392($fp)
+lw $s2, 424($fp)
+li $s2, 3
+     #global_char_array_1 [ @t106 ]  = 90
+li $t0, 90
+add $t1, $s2, $gp
+addi $t1, $t1, 24
+sb $t0, ($t1)
+     #@t107 = 4
+sw $s3, 396($fp)
+lw $s3, 428($fp)
+li $s3, 4
+     #global_char_array_1 [ @t107 ]  = 95
+li $t0, 95
+add $t1, $s3, $gp
+addi $t1, $t1, 24
+sb $t0, ($t1)
+     #@t108 = 0
+sw $s4, 400($fp)
+lw $s4, 432($fp)
+li $s4, 0
+     #global_char_array_2 [ @t108 ]  = 43
+li $t0, 43
+add $t1, $s4, $gp
+addi $t1, $t1, 56
+sb $t0, ($t1)
+     #@t109 = 1
+sw $s5, 404($fp)
+lw $s5, 436($fp)
+li $s5, 1
+     #global_char_array_2 [ @t109 ]  = 45
+li $t0, 45
+add $t1, $s5, $gp
+addi $t1, $t1, 56
+sb $t0, ($t1)
+     #@t110 = 2
+sw $s6, 408($fp)
+lw $s6, 440($fp)
+li $s6, 2
+     #global_char_array_2 [ @t110 ]  = 42
+li $t0, 42
+add $t1, $s6, $gp
+addi $t1, $t1, 56
+sb $t0, ($t1)
+     #@t111 = 3
+sw $s7, 412($fp)
+lw $s7, 444($fp)
+li $s7, 3
+     #global_char_array_2 [ @t111 ]  = 47
+li $t0, 47
+add $t1, $s7, $gp
+addi $t1, $t1, 56
+sb $t0, ($t1)
+     #@t112 = 4
+sw $s0, 416($fp)
+lw $s0, 448($fp)
+li $s0, 4
+     #global_char_array_2 [ @t112 ]  = 54
+li $t0, 54
+add $t1, $s0, $gp
+addi $t1, $t1, 56
+sb $t0, ($t1)
+     ##ret 
+jr $ra
+     ##ret 
+jr $ra
+     #void assignGlobal ()
+sw $s0, 448($fp)
+sw $s1, 420($fp)
+sw $s2, 424($fp)
+sw $s3, 428($fp)
+sw $s4, 432($fp)
+sw $s5, 436($fp)
+sw $s6, 440($fp)
+sw $s7, 444($fp)
+assignGlobal_label:
+     ##para int a
+lw $s1, 0($fp)
+lw $s1, -4($fp)
+     ##para char b
+lb $s2, 4($fp)
+lw $s2, -8($fp)
+     ##para int c
+lw $s3, 8($fp)
+lw $s3, -12($fp)
+     ##para char d
+lb $s4, 5($fp)
+lw $s4, -16($fp)
+     #@t113 = a
+lw $s5, 464($fp)
+move $s5, $s1
+     #@t114 = @t113
+lw $s6, 468($fp)
+move $s6, $s5
+     #global_int_1 = @t114
+lw $s7, 20($gp)
+move $s7, $s6
+sw $s7, 20($gp)
+     #@t115 = b
+lw $s0, 472($fp)
+move $s0, $s2
+     #@t116 = @t115
+sw $s1, 0($fp)
+lw $s1, 476($fp)
+move $s1, $s0
+     #global_char_1 = @t116
+sb $s2, 4($fp)
+lb $s2, 29($gp)
+move $s2, $s1
+sb $s2, 29($gp)
+     #@t117 = c
+sb $s4, 5($fp)
+lw $s4, 480($fp)
+move $s4, $s3
+     #@t118 = @t117
+sw $s5, 464($fp)
+lw $s5, 484($fp)
+move $s5, $s4
+     #global_int_2 = @t118
+sw $s6, 468($fp)
+lw $s6, 32($gp)
+move $s6, $s5
+sw $s6, 32($gp)
+     #@t119 = d
+sw $s7, 20($gp)
+lw $s7, 488($fp)
+sw $s0, 472($fp)
+lb $s0, 5($fp)
+move $s7, $s0
+     #@t120 = @t119
+sw $s1, 476($fp)
+lw $s1, 492($fp)
+move $s1, $s7
+     #global_char_2 = @t120
+sb $s2, 29($gp)
+lb $s2, 30($gp)
+move $s2, $s1
+sb $s2, 30($gp)
+     ##ret 
+jr $ra
+     ##ret 
+jr $ra
+     #void printGlobalConst ()
+sb $s0, 5($fp)
+sw $s1, 492($fp)
+sb $s2, 30($gp)
+sw $s3, 8($fp)
+sw $s4, 480($fp)
+sw $s5, 484($fp)
+sw $s6, 32($gp)
+sw $s7, 488($fp)
+printGlobalConst_label:
+     ##printf int 12345679
+li $v0, 1
+li $a0, 12345679
+syscall
+     ##printf int 0
+li $v0, 1
+li $a0, 0
+syscall
+     ##printf int 0
+li $v0, 1
+li $a0, 0
+syscall
+     ##printf int -12345679
+li $v0, 1
+li $a0, -12345679
+syscall
+     ##printf char 57
+li $v0, 11
+li $a0, 57
+syscall
+     ##printf char 95
+li $v0, 11
+li $a0, 95
+syscall
+     ##printf char 43
+li $v0, 11
+li $a0, 43
+syscall
+     ##printf char 42
+li $v0, 11
+li $a0, 42
+syscall
+     ##ret 
+jr $ra
+     ##ret 
+jr $ra
+     #void printGlobalVar ()
+printGlobalVar_label:
+     #@t121 = global_int_1
+lw $s3, 484($fp)
+lw $s4, 20($gp)
+move $s3, $s4
+     #@t122 = @t121
+lw $s5, 488($fp)
+move $s5, $s3
+     ##printf int @t122
+li $v0, 1
+move $a0, $s5
+syscall
+     #@t123 = global_int_2
+lw $s7, 492($fp)
+lw $s0, 32($gp)
+move $s7, $s0
+     #@t124 = @t123
+lw $s1, 496($fp)
+move $s1, $s7
+     ##printf int @t124
+li $v0, 1
+move $a0, $s1
+syscall
+     #@t125 = global_char_1
+lw $s2, 500($fp)
+sw $s3, 484($fp)
+lb $s3, 29($gp)
+move $s2, $s3
+     #@t126 = @t125
+sw $s4, 20($gp)
+lw $s4, 504($fp)
+move $s4, $s2
+     ##printf char @t126
+li $v0, 11
+move $a0, $s4
+syscall
+     #@t127 = global_char_2
+sw $s5, 488($fp)
+lw $s5, 508($fp)
+lb $s6, 30($gp)
+move $s5, $s6
+     #@t128 = @t127
+sw $s7, 492($fp)
+lw $s7, 512($fp)
+move $s7, $s5
+     ##printf char @t128
+li $v0, 11
+move $a0, $s7
+syscall
+     ##ret 
+jr $ra
+     ##ret 
+jr $ra
+     #void printGlobalArray ()
+sw $s0, 32($gp)
+sw $s1, 496($fp)
+sw $s2, 500($fp)
+sb $s3, 29($gp)
+sw $s4, 504($fp)
+sw $s5, 508($fp)
+sb $s6, 30($gp)
+sw $s7, 512($fp)
+printGlobalArray_label:
+     #@t129 = 0
+lw $s0, 516($fp)
+li $s0, 0
+     #@t130 = global_int_array_1 [ @t129 ] 
+lw $s1, 520($fp)
+sll $t1, $s0, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+lw $s1, ($t1)
+     #@t131 = @t130
+lw $s2, 524($fp)
+move $s2, $s1
+     #@t132 = @t131
+lw $s3, 528($fp)
+move $s3, $s2
+     ##printf int @t132
+li $v0, 1
+move $a0, $s3
+syscall
+     #@t133 = 1
+lw $s4, 532($fp)
+li $s4, 1
+     #@t134 = global_int_array_1 [ @t133 ] 
+lw $s5, 536($fp)
+sll $t1, $s4, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+lw $s5, ($t1)
+     #@t135 = @t134
+lw $s6, 540($fp)
+move $s6, $s5
+     #@t136 = @t135
+lw $s7, 544($fp)
+move $s7, $s6
+     ##printf int @t136
+li $v0, 1
+move $a0, $s7
+syscall
+     #@t137 = 2
+sw $s0, 516($fp)
+lw $s0, 548($fp)
+li $s0, 2
+     #@t138 = global_int_array_1 [ @t137 ] 
+sw $s1, 520($fp)
+lw $s1, 552($fp)
+sll $t1, $s0, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+lw $s1, ($t1)
+     #@t139 = @t138
+sw $s2, 524($fp)
+lw $s2, 556($fp)
+move $s2, $s1
+     #@t140 = @t139
+sw $s3, 528($fp)
+lw $s3, 560($fp)
+move $s3, $s2
+     ##printf int @t140
+li $v0, 1
+move $a0, $s3
+syscall
+     #@t141 = 3
+sw $s4, 532($fp)
+lw $s4, 564($fp)
+li $s4, 3
+     #@t142 = global_int_array_1 [ @t141 ] 
+sw $s5, 536($fp)
+lw $s5, 568($fp)
+sll $t1, $s4, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+lw $s5, ($t1)
+     #@t143 = @t142
+sw $s6, 540($fp)
+lw $s6, 572($fp)
+move $s6, $s5
+     #@t144 = @t143
+sw $s7, 544($fp)
+lw $s7, 576($fp)
+move $s7, $s6
+     ##printf int @t144
+li $v0, 1
+move $a0, $s7
+syscall
+     #@t145 = 4
+sw $s0, 548($fp)
+lw $s0, 580($fp)
+li $s0, 4
+     #@t146 = global_int_array_1 [ @t145 ] 
+sw $s1, 552($fp)
+lw $s1, 584($fp)
+sll $t1, $s0, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 0
+lw $s1, ($t1)
+     #@t147 = @t146
+sw $s2, 556($fp)
+lw $s2, 588($fp)
+move $s2, $s1
+     #@t148 = @t147
+sw $s3, 560($fp)
+lw $s3, 592($fp)
+move $s3, $s2
+     ##printf int @t148
+li $v0, 1
+move $a0, $s3
+syscall
+     #@t149 = 0
+sw $s4, 564($fp)
+lw $s4, 596($fp)
+li $s4, 0
+     #@t150 = global_int_array_2 [ @t149 ] 
+sw $s5, 568($fp)
+lw $s5, 600($fp)
+sll $t1, $s4, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 36
+lw $s5, ($t1)
+     #@t151 = @t150
+sw $s6, 572($fp)
+lw $s6, 604($fp)
+move $s6, $s5
+     #@t152 = @t151
+sw $s7, 576($fp)
+lw $s7, 608($fp)
+move $s7, $s6
+     ##printf int @t152
+li $v0, 1
+move $a0, $s7
+syscall
+     #@t153 = 1
+sw $s0, 580($fp)
+lw $s0, 612($fp)
+li $s0, 1
+     #@t154 = global_int_array_2 [ @t153 ] 
+sw $s1, 584($fp)
+lw $s1, 616($fp)
+sll $t1, $s0, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 36
+lw $s1, ($t1)
+     #@t155 = @t154
+sw $s2, 588($fp)
+lw $s2, 620($fp)
+move $s2, $s1
+     #@t156 = @t155
+sw $s3, 592($fp)
+lw $s3, 624($fp)
+move $s3, $s2
+     ##printf int @t156
+li $v0, 1
+move $a0, $s3
+syscall
+     #@t157 = 2
+sw $s4, 596($fp)
+lw $s4, 628($fp)
+li $s4, 2
+     #@t158 = global_int_array_2 [ @t157 ] 
+sw $s5, 600($fp)
+lw $s5, 632($fp)
+sll $t1, $s4, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 36
+lw $s5, ($t1)
+     #@t159 = @t158
+sw $s6, 604($fp)
+lw $s6, 636($fp)
+move $s6, $s5
+     #@t160 = @t159
+sw $s7, 608($fp)
+lw $s7, 640($fp)
+move $s7, $s6
+     ##printf int @t160
+li $v0, 1
+move $a0, $s7
+syscall
+     #@t161 = 3
+sw $s0, 612($fp)
+lw $s0, 644($fp)
+li $s0, 3
+     #@t162 = global_int_array_2 [ @t161 ] 
+sw $s1, 616($fp)
+lw $s1, 648($fp)
+sll $t1, $s0, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 36
+lw $s1, ($t1)
+     #@t163 = @t162
+sw $s2, 620($fp)
+lw $s2, 652($fp)
+move $s2, $s1
+     #@t164 = @t163
+sw $s3, 624($fp)
+lw $s3, 656($fp)
+move $s3, $s2
+     ##printf int @t164
+li $v0, 1
+move $a0, $s3
+syscall
+     #@t165 = 4
+sw $s4, 628($fp)
+lw $s4, 660($fp)
+li $s4, 4
+     #@t166 = global_int_array_2 [ @t165 ] 
+sw $s5, 632($fp)
+lw $s5, 664($fp)
+sll $t1, $s4, 2
+add $t1, $t1, $gp
+addi $t1, $t1, 36
+lw $s5, ($t1)
+     #@t167 = @t166
+sw $s6, 636($fp)
+lw $s6, 668($fp)
+move $s6, $s5
+     #@t168 = @t167
+sw $s7, 640($fp)
+lw $s7, 672($fp)
+move $s7, $s6
+     ##printf int @t168
+li $v0, 1
+move $a0, $s7
+syscall
+     #@t169 = 0
+sw $s0, 644($fp)
+lw $s0, 676($fp)
+li $s0, 0
+     #@t170 = global_char_array_1 [ @t169 ] 
+sw $s1, 648($fp)
+lw $s1, 680($fp)
+add $t1, $s0, $gp
+addi $t1, $t1, 24
+lb $s1, ($t1)
+     #@t171 = @t170
+sw $s2, 652($fp)
+lw $s2, 684($fp)
+move $s2, $s1
+     #@t172 = @t171
+sw $s3, 656($fp)
+lw $s3, 688($fp)
+move $s3, $s2
+     ##printf char @t172
+li $v0, 11
+move $a0, $s3
+syscall
+     #@t173 = 1
+sw $s4, 660($fp)
+lw $s4, 692($fp)
+li $s4, 1
+     #@t174 = global_char_array_1 [ @t173 ] 
+sw $s5, 664($fp)
+lw $s5, 696($fp)
+add $t1, $s4, $gp
+addi $t1, $t1, 24
+lb $s5, ($t1)
+     #@t175 = @t174
+sw $s6, 668($fp)
+lw $s6, 700($fp)
+move $s6, $s5
+     #@t176 = @t175
+sw $s7, 672($fp)
+lw $s7, 704($fp)
+move $s7, $s6
+     ##printf char @t176
+li $v0, 11
+move $a0, $s7
+syscall
+     #@t177 = 2
+sw $s0, 676($fp)
+lw $s0, 708($fp)
+li $s0, 2
+     #@t178 = global_char_array_1 [ @t177 ] 
+sw $s1, 680($fp)
+lw $s1, 712($fp)
+add $t1, $s0, $gp
+addi $t1, $t1, 24
+lb $s1, ($t1)
+     #@t179 = @t178
+sw $s2, 684($fp)
+lw $s2, 716($fp)
+move $s2, $s1
+     #@t180 = @t179
+sw $s3, 688($fp)
+lw $s3, 720($fp)
+move $s3, $s2
+     ##printf char @t180
+li $v0, 11
+move $a0, $s3
+syscall
+     #@t181 = 3
+sw $s4, 692($fp)
+lw $s4, 724($fp)
+li $s4, 3
+     #@t182 = global_char_array_1 [ @t181 ] 
+sw $s5, 696($fp)
+lw $s5, 728($fp)
+add $t1, $s4, $gp
+addi $t1, $t1, 24
+lb $s5, ($t1)
+     #@t183 = @t182
+sw $s6, 700($fp)
+lw $s6, 732($fp)
+move $s6, $s5
+     #@t184 = @t183
+sw $s7, 704($fp)
+lw $s7, 736($fp)
+move $s7, $s6
+     ##printf char @t184
+li $v0, 11
+move $a0, $s7
+syscall
+     #@t185 = 4
+sw $s0, 708($fp)
+lw $s0, 740($fp)
+li $s0, 4
+     #@t186 = global_char_array_1 [ @t185 ] 
+sw $s1, 712($fp)
+lw $s1, 744($fp)
+add $t1, $s0, $gp
+addi $t1, $t1, 24
+lb $s1, ($t1)
+     #@t187 = @t186
+sw $s2, 716($fp)
+lw $s2, 748($fp)
+move $s2, $s1
+     #@t188 = @t187
+sw $s3, 720($fp)
+lw $s3, 752($fp)
+move $s3, $s2
+     ##printf char @t188
+li $v0, 11
+move $a0, $s3
+syscall
+     #@t189 = 0
+sw $s4, 724($fp)
+lw $s4, 756($fp)
+li $s4, 0
+     #@t190 = global_char_array_2 [ @t189 ] 
+sw $s5, 728($fp)
+lw $s5, 760($fp)
+add $t1, $s4, $gp
+addi $t1, $t1, 56
+lb $s5, ($t1)
+     #@t191 = @t190
+sw $s6, 732($fp)
+lw $s6, 764($fp)
+move $s6, $s5
+     #@t192 = @t191
+sw $s7, 736($fp)
+lw $s7, 768($fp)
+move $s7, $s6
+     ##printf char @t192
+li $v0, 11
+move $a0, $s7
+syscall
+     #@t193 = 1
+sw $s0, 740($fp)
+lw $s0, 772($fp)
+li $s0, 1
+     #@t194 = global_char_array_2 [ @t193 ] 
+sw $s1, 744($fp)
+lw $s1, 776($fp)
+add $t1, $s0, $gp
+addi $t1, $t1, 56
+lb $s1, ($t1)
+     #@t195 = @t194
+sw $s2, 748($fp)
+lw $s2, 780($fp)
+move $s2, $s1
+     #@t196 = @t195
+sw $s3, 752($fp)
+lw $s3, 784($fp)
+move $s3, $s2
+     ##printf char @t196
+li $v0, 11
+move $a0, $s3
+syscall
+     #@t197 = 2
+sw $s4, 756($fp)
+lw $s4, 788($fp)
+li $s4, 2
+     #@t198 = global_char_array_2 [ @t197 ] 
+sw $s5, 760($fp)
+lw $s5, 792($fp)
+add $t1, $s4, $gp
+addi $t1, $t1, 56
+lb $s5, ($t1)
+     #@t199 = @t198
+sw $s6, 764($fp)
+lw $s6, 796($fp)
+move $s6, $s5
+     #@t200 = @t199
+sw $s7, 768($fp)
+lw $s7, 800($fp)
+move $s7, $s6
+     ##printf char @t200
+li $v0, 11
+move $a0, $s7
+syscall
+     #@t201 = 3
+sw $s0, 772($fp)
+lw $s0, 804($fp)
+li $s0, 3
+     #@t202 = global_char_array_2 [ @t201 ] 
+sw $s1, 776($fp)
+lw $s1, 808($fp)
+add $t1, $s0, $gp
+addi $t1, $t1, 56
+lb $s1, ($t1)
+     #@t203 = @t202
+sw $s2, 780($fp)
+lw $s2, 812($fp)
+move $s2, $s1
+     #@t204 = @t203
+sw $s3, 784($fp)
+lw $s3, 816($fp)
+move $s3, $s2
+     ##printf char @t204
+li $v0, 11
+move $a0, $s3
+syscall
+     #@t205 = 4
+sw $s4, 788($fp)
+lw $s4, 820($fp)
+li $s4, 4
+     #@t206 = global_char_array_2 [ @t205 ] 
+sw $s5, 792($fp)
+lw $s5, 824($fp)
+add $t1, $s4, $gp
+addi $t1, $t1, 56
+lb $s5, ($t1)
+     #@t207 = @t206
+sw $s6, 796($fp)
+lw $s6, 828($fp)
+move $s6, $s5
+     #@t208 = @t207
+sw $s7, 800($fp)
+lw $s7, 832($fp)
+move $s7, $s6
+     ##printf char @t208
+li $v0, 11
+move $a0, $s7
+syscall
+     ##ret 
+jr $ra
+     ##ret 
+jr $ra
+     #void testGlobal ()
+sw $s0, 804($fp)
+sw $s1, 808($fp)
+sw $s2, 812($fp)
+sw $s3, 816($fp)
+sw $s4, 820($fp)
+sw $s5, 824($fp)
+sw $s6, 828($fp)
+sw $s7, 832($fp)
+testGlobal_label:
+     ##call initGlobalArray
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 0
+jal initGlobalArray_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##push 12345679
+     ##push 57
+     ##push -12345679
+     ##push 42
+     ##call assignGlobal
+li $t0, 42
+sw $t0, 0($fp)
+li $t0, -12345679
+sw $t0, 4($fp)
+li $t0, 57
+sw $t0, 8($fp)
+li $t0, 12345679
+sw $t0, 12($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 16
+jal assignGlobal_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##call printGlobalConst
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 0
+jal printGlobalConst_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##call printGlobalVar
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 0
+jal printGlobalVar_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##call printGlobalArray
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 0
+jal printGlobalArray_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##ret 
+jr $ra
+     ##ret 
+jr $ra
+     #int testReturnInt ()
+testReturnInt_label:
+     ##para int a
+lw $s0, 0($fp)
+lw $s0, -4($fp)
+     #@t209 = a
+lw $s1, 840($fp)
+move $s1, $s0
+     #@t210 = @t209
+lw $s2, 844($fp)
+move $s2, $s1
+     #@t210 = @t210 ADD 1
+addi $s2, $s2, 1
+     ##ret @t210
+move $v0, $s2
+jr $ra
+     ##ret 0
+li $v0, 0
+jr $ra
+     #char testReturnChar ()
+sw $s0, 0($fp)
+sw $s1, 840($fp)
+sw $s2, 844($fp)
+testReturnChar_label:
+     ##para int a
+lw $s3, 0($fp)
+lw $s3, -4($fp)
+     #@t211 = a
+lw $s4, 848($fp)
+move $s4, $s3
+     #@t212 = @t211
+lw $s5, 852($fp)
+move $s5, $s4
+     ##BE @t212 1 testReturnChar_case1
+sw $s3, 0($fp)
+sw $s4, 848($fp)
+sw $s5, 852($fp)
+lw $s6, 852($fp)
+beq $s6, 1, testReturnChar_case1
+nop
+     ##GOTO testReturnChar_case_over2
+sw $s6, 852($fp)
+j testReturnChar_case_over2
+nop
+     #testReturnChar_case1 :
+testReturnChar_case1:
+     ##ret 97
+li $v0, 97
+jr $ra
+     ##GOTO testReturnChar_switch_end0
+j testReturnChar_switch_end0
+nop
+     #testReturnChar_case_over2 :
+testReturnChar_case_over2:
+     ##BE @t212 2 testReturnChar_case3
+lw $s7, 852($fp)
+beq $s7, 2, testReturnChar_case3
+nop
+     ##GOTO testReturnChar_case_over4
+sw $s7, 852($fp)
+j testReturnChar_case_over4
+nop
+     #testReturnChar_case3 :
+testReturnChar_case3:
+     ##ret 98
+li $v0, 98
+jr $ra
+     ##GOTO testReturnChar_switch_end0
+j testReturnChar_switch_end0
+nop
+     #testReturnChar_case_over4 :
+testReturnChar_case_over4:
+     ##BE @t212 3 testReturnChar_case5
+lw $s0, 852($fp)
+beq $s0, 3, testReturnChar_case5
+nop
+     ##GOTO testReturnChar_case_over6
+sw $s0, 852($fp)
+j testReturnChar_case_over6
+nop
+     #testReturnChar_case5 :
+testReturnChar_case5:
+     ##ret 99
+li $v0, 99
+jr $ra
+     ##GOTO testReturnChar_switch_end0
+j testReturnChar_switch_end0
+nop
+     #testReturnChar_case_over6 :
+testReturnChar_case_over6:
+     #testReturnChar_default7 :
+testReturnChar_default7:
+     ##GOTO testReturnChar_switch_end0
+j testReturnChar_switch_end0
+nop
+     #testReturnChar_switch_end0 :
+testReturnChar_switch_end0:
+     ##ret 95
+li $v0, 95
+jr $ra
+     ##ret 0
+li $v0, 0
+jr $ra
+     #void testReturn ()
+testReturn_label:
+     ##push 3
+     ##call fac
+li $t0, 3
+sw $t0, 0($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 4
+jal fac_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t213
+lw $s1, 852($fp)
+move $s1, $v0
+     #@t214 = @t213
+lw $s2, 856($fp)
+move $s2, $s1
+     #@t215 = @t214
+lw $s3, 860($fp)
+move $s3, $s2
+     ##push 2
+     ##call fac
+li $t0, 2
+sw $t0, 864($fp)
+sw $s1, 852($fp)
+sw $s2, 856($fp)
+sw $s3, 860($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 868
+jal fac_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t216
+lw $s4, 864($fp)
+move $s4, $v0
+     #@t217 = @t216
+lw $s5, 868($fp)
+move $s5, $s4
+     #@t215 = @t215 ADD @t217
+lw $s6, 860($fp)
+add $s6, $s6, $s5
+     ##push @t215
+     ##call Fibonacci
+sw $s6, 872($fp)
+sw $s4, 864($fp)
+sw $s5, 868($fp)
+sw $s6, 860($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 876
+jal Fibonacci_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t218
+lw $s7, 872($fp)
+move $s7, $v0
+     #@t219 = @t218
+lw $s0, 876($fp)
+move $s0, $s7
+     #@t220 = @t219
+lw $s1, 880($fp)
+move $s1, $s0
+     ##push @t220
+     ##call testReturnInt
+sw $s1, 884($fp)
+sw $s0, 876($fp)
+sw $s1, 880($fp)
+sw $s7, 872($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 888
+jal testReturnInt_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t221
+lw $s2, 884($fp)
+move $s2, $v0
+     #@t222 = @t221
+lw $s3, 888($fp)
+move $s3, $s2
+     #@t223 = @t222
+lw $s4, 892($fp)
+move $s4, $s3
+     ##printf int @t223
+li $v0, 1
+move $a0, $s4
+syscall
+     ##push 1
+     ##call testReturnChar
+li $t0, 1
+sw $t0, 896($fp)
+sw $s2, 884($fp)
+sw $s3, 888($fp)
+sw $s4, 892($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 900
+jal testReturnChar_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t224
+lw $s5, 896($fp)
+move $s5, $v0
+     #@t225 = @t224
+lw $s6, 900($fp)
+move $s6, $s5
+     #@t226 = @t225
+lw $s7, 904($fp)
+move $s7, $s6
+     ##printf char @t226
+li $v0, 11
+move $a0, $s7
+syscall
+     ##push 2
+     ##call testReturnChar
+li $t0, 2
+sw $t0, 908($fp)
+sw $s5, 896($fp)
+sw $s6, 900($fp)
+sw $s7, 904($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 912
+jal testReturnChar_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t227
+lw $s0, 908($fp)
+move $s0, $v0
+     #@t228 = @t227
+lw $s1, 912($fp)
+move $s1, $s0
+     #@t229 = @t228
+lw $s2, 916($fp)
+move $s2, $s1
+     ##printf char @t229
+li $v0, 11
+move $a0, $s2
+syscall
+     ##push 3
+     ##call testReturnChar
+li $t0, 3
+sw $t0, 920($fp)
+sw $s0, 908($fp)
+sw $s1, 912($fp)
+sw $s2, 916($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 924
+jal testReturnChar_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t230
+lw $s3, 920($fp)
+move $s3, $v0
+     #@t231 = @t230
+lw $s4, 924($fp)
+move $s4, $s3
+     #@t232 = @t231
+lw $s5, 928($fp)
+move $s5, $s4
+     ##printf char @t232
+li $v0, 11
+move $a0, $s5
+syscall
+     ##push 4
+     ##call testReturnChar
+li $t0, 4
+sw $t0, 932($fp)
+sw $s3, 920($fp)
+sw $s4, 924($fp)
+sw $s5, 928($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 936
+jal testReturnChar_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t233
+lw $s6, 932($fp)
+move $s6, $v0
+     #@t234 = @t233
+lw $s7, 936($fp)
+move $s7, $s6
+     #@t235 = @t234
+lw $s0, 940($fp)
+move $s0, $s7
+     ##printf char @t235
+li $v0, 11
+move $a0, $s0
+syscall
+     ##ret 
+jr $ra
+     ##ret 
+jr $ra
+     #void testAssignAndExp ()
+sw $s0, 940($fp)
+sw $s6, 932($fp)
+sw $s7, 936($fp)
+testAssignAndExp_label:
+     ##var int int_temp_1
+     ##var int int_temp_2
+     ##array int int_array [] 2
+     ##var int int_temp_3
+     ##var char char_temp_1
+     ##array char char_array [] 2
+     ##var char char_temp_2
+     ##push 5
+     ##call Fibonacci
+li $t0, 5
+sw $t0, 24($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 28
+jal Fibonacci_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t236
+lw $s1, 968($fp)
+move $s1, $v0
+     #@t237 = @t236
+lw $s2, 972($fp)
+move $s2, $s1
+     #@t238 = @t237
+lw $s3, 976($fp)
+move $s3, $s2
+     ##push @t238
+     ##call Fibonacci
+sw $s3, 980($fp)
+sw $s1, 968($fp)
+sw $s2, 972($fp)
+sw $s3, 976($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 984
+jal Fibonacci_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t239
+lw $s4, 980($fp)
+move $s4, $v0
+     #@t240 = @t239
+lw $s5, 984($fp)
+move $s5, $s4
+     #@t241 = @t240
+lw $s6, 988($fp)
+move $s6, $s5
+     ##push @t241
+     ##call Fibonacci
+sw $s6, 992($fp)
+sw $s4, 980($fp)
+sw $s5, 984($fp)
+sw $s6, 988($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 996
+jal Fibonacci_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t242
+lw $s7, 992($fp)
+move $s7, $v0
+     #@t243 = @t242
+lw $s0, 996($fp)
+move $s0, $s7
+     #@t244 = @t243
+lw $s1, 1000($fp)
+move $s1, $s0
+     #@t244 = @t244 ADD 0
+addi $s1, $s1, 0
+     #@t245 = @t244
+lw $s2, 1004($fp)
+move $s2, $s1
+     ##push 3
+     ##call fac
+li $t0, 3
+sw $t0, 1008($fp)
+sw $s0, 996($fp)
+sw $s1, 1000($fp)
+sw $s2, 1004($fp)
+sw $s7, 992($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1012
+jal fac_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t246
+lw $s3, 1008($fp)
+move $s3, $v0
+     #@t245 = @t245 DIV @t246
+lw $s4, 1004($fp)
+div $s4, $s4, $s3
+     #@t247 = 1
+lw $s5, 1012($fp)
+li $s5, 1
+     #@t247 = @t247 ADD @t245
+add $s5, $s5, $s4
+     #int_temp_1 = @t247
+lw $s6, 0($fp)
+move $s6, $s5
+     ##push 3
+     ##call fac
+li $t0, 3
+sw $t0, 1016($fp)
+sw $s3, 1008($fp)
+sw $s4, 1004($fp)
+sw $s5, 1012($fp)
+sw $s6, 0($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1020
+jal fac_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t248
+lw $s7, 1016($fp)
+move $s7, $v0
+     #@t249 = @t248
+lw $s0, 1020($fp)
+move $s0, $s7
+     #@t250 = @t249
+lw $s1, 1024($fp)
+move $s1, $s0
+     ##push 2
+     ##call fac
+li $t0, 2
+sw $t0, 1028($fp)
+sw $s0, 1020($fp)
+sw $s1, 1024($fp)
+sw $s7, 1016($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1032
+jal fac_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t251
+lw $s2, 1028($fp)
+move $s2, $v0
+     #@t252 = @t251
+lw $s3, 1032($fp)
+move $s3, $s2
+     #@t250 = @t250 ADD @t252
+lw $s4, 1024($fp)
+add $s4, $s4, $s3
+     ##push @t250
+     ##call fac
+sw $s4, 1036($fp)
+sw $s2, 1028($fp)
+sw $s3, 1032($fp)
+sw $s4, 1024($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1040
+jal fac_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t253
+lw $s5, 1036($fp)
+move $s5, $v0
+     #@t254 = @t253
+lw $s6, 1040($fp)
+move $s6, $s5
+     #@t255 = @t254
+lw $s7, 1044($fp)
+move $s7, $s6
+     #int_temp_2 = @t255
+lw $s0, 4($fp)
+move $s0, $s7
+     #@t256 = 0
+lw $s1, 1048($fp)
+li $s1, 0
+     ##push 0
+     ##call testReturnInt
+li $t0, 0
+sw $t0, 1052($fp)
+sw $s0, 4($fp)
+sw $s1, 1048($fp)
+sw $s5, 1036($fp)
+sw $s6, 1040($fp)
+sw $s7, 1044($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1056
+jal testReturnInt_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t257
+lw $s2, 1052($fp)
+move $s2, $v0
+     #@t258 = @t257
+lw $s3, 1056($fp)
+move $s3, $s2
+     #@t259 = @t258
+lw $s4, 1060($fp)
+move $s4, $s3
+     #int_array [ @t256 ]  = @t259
+lw $s5, 1048($fp)
+sll $t1, $s5, 2
+add $t1, $t1, $fp
+addi $t1, $t1, 8
+sw $s4, ($t1)
+     ##push 0
+     ##call testReturnInt
+li $t0, 0
+sw $t0, 1064($fp)
+sw $s2, 1052($fp)
+sw $s3, 1056($fp)
+sw $s4, 1060($fp)
+sw $s5, 1048($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1068
+jal testReturnInt_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t260
+lw $s6, 1064($fp)
+move $s6, $v0
+     #@t261 = @t260
+lw $s7, 1068($fp)
+move $s7, $s6
+     #@t261 = @t261 MUL -12345679
+mul $s7, $s7, -12345679
+     #@t262 = 12345679
+lw $s0, 1072($fp)
+li $s0, 12345679
+     #@t262 = @t262 ADD @t261
+add $s0, $s0, $s7
+     #@t263 = @t262
+lw $s1, 1076($fp)
+move $s1, $s0
+     #@t264 = 1
+lw $s2, 1080($fp)
+li $s2, 1
+     #@t264 = @t264 SUB @t263
+sub $s2, $s2, $s1
+     ##push 1
+     ##call testReturnInt
+li $t0, 1
+sw $t0, 1084($fp)
+sw $s0, 1072($fp)
+sw $s1, 1076($fp)
+sw $s2, 1080($fp)
+sw $s6, 1064($fp)
+sw $s7, 1068($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1088
+jal testReturnInt_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t265
+lw $s3, 1084($fp)
+move $s3, $v0
+     #@t266 = @t265
+lw $s4, 1088($fp)
+move $s4, $s3
+     #@t267 = 1
+lw $s5, 1092($fp)
+li $s5, 1
+     #@t267 = @t267 ADD @t266
+add $s5, $s5, $s4
+     #int_array [ @t264 ]  = @t267
+lw $s6, 1080($fp)
+sll $t1, $s6, 2
+add $t1, $t1, $fp
+addi $t1, $t1, 8
+sw $s5, ($t1)
+     #@t268 = 0
+lw $s7, 1096($fp)
+li $s7, 0
+     #@t269 = int_array [ @t268 ] 
+lw $s0, 1100($fp)
+sll $t1, $s7, 2
+add $t1, $t1, $fp
+addi $t1, $t1, 8
+lw $s0, ($t1)
+     #@t270 = @t269
+lw $s1, 1104($fp)
+move $s1, $s0
+     #@t271 = @t270
+lw $s2, 1108($fp)
+move $s2, $s1
+     ##push 0
+     ##call testReturnInt
+li $t0, 0
+sw $t0, 1112($fp)
+sw $s0, 1100($fp)
+sw $s1, 1104($fp)
+sw $s2, 1108($fp)
+sw $s3, 1084($fp)
+sw $s4, 1088($fp)
+sw $s5, 1092($fp)
+sw $s6, 1080($fp)
+sw $s7, 1096($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1116
+jal testReturnInt_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t272
+lw $s3, 1112($fp)
+move $s3, $v0
+     #@t273 = @t272
+lw $s4, 1116($fp)
+move $s4, $s3
+     #@t273 = @t273 MUL -12345679
+mul $s4, $s4, -12345679
+     #@t274 = 12345679
+lw $s5, 1120($fp)
+li $s5, 12345679
+     #@t274 = @t274 ADD @t273
+add $s5, $s5, $s4
+     #@t275 = @t274
+lw $s6, 1124($fp)
+move $s6, $s5
+     #@t276 = 1
+lw $s7, 1128($fp)
+li $s7, 1
+     #@t276 = @t276 SUB @t275
+sub $s7, $s7, $s6
+     #@t277 = int_array [ @t276 ] 
+lw $s0, 1132($fp)
+sll $t1, $s7, 2
+add $t1, $t1, $fp
+addi $t1, $t1, 8
+lw $s0, ($t1)
+     #@t278 = @t277
+lw $s1, 1136($fp)
+move $s1, $s0
+     #@t278 = @t278 MUL 1
+mul $s1, $s1, 1
+     #@t279 = @t278
+lw $s2, 1140($fp)
+move $s2, $s1
+     #@t280 = @t279
+sw $s3, 1112($fp)
+lw $s3, 1144($fp)
+move $s3, $s2
+     #@t271 = @t271 SUB @t280
+sw $s4, 1116($fp)
+lw $s4, 1108($fp)
+sub $s4, $s4, $s3
+     #int_temp_3 = @t271
+sw $s5, 1120($fp)
+lw $s5, 16($fp)
+move $s5, $s4
+     #@t281 = 0
+sw $s6, 1124($fp)
+lw $s6, 1148($fp)
+li $s6, 0
+     #@t282 = 0
+sw $s7, 1128($fp)
+lw $s7, 1152($fp)
+li $s7, 0
+     #@t283 = int_array [ @t282 ] 
+sw $s0, 1132($fp)
+lw $s0, 1156($fp)
+sll $t1, $s7, 2
+add $t1, $t1, $fp
+addi $t1, $t1, 8
+lw $s0, ($t1)
+     #@t284 = @t283
+sw $s1, 1136($fp)
+lw $s1, 1160($fp)
+move $s1, $s0
+     #@t285 = @t284
+sw $s2, 1140($fp)
+lw $s2, 1164($fp)
+move $s2, $s1
+     ##push @t285
+     ##call testReturnChar
+sw $s2, 1168($fp)
+sw $s0, 1156($fp)
+sw $s1, 1160($fp)
+sw $s2, 1164($fp)
+sw $s3, 1144($fp)
+sw $s4, 1108($fp)
+sw $s5, 16($fp)
+sw $s6, 1148($fp)
+sw $s7, 1152($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1172
+jal testReturnChar_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t286
+lw $s3, 1168($fp)
+move $s3, $v0
+     #@t287 = @t286
+lw $s4, 1172($fp)
+move $s4, $s3
+     #@t288 = @t287
+lw $s5, 1176($fp)
+move $s5, $s4
+     #char_array [ @t281 ]  = @t288
+lw $s6, 1148($fp)
+add $t1, $s6, $fp
+addi $t1, $t1, 21
+sb $s5, ($t1)
+     ##push 0
+     ##call testReturnInt
+li $t0, 0
+sw $t0, 1180($fp)
+sw $s3, 1168($fp)
+sw $s4, 1172($fp)
+sw $s5, 1176($fp)
+sw $s6, 1148($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1184
+jal testReturnInt_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t289
+lw $s7, 1180($fp)
+move $s7, $v0
+     #@t290 = @t289
+lw $s0, 1184($fp)
+move $s0, $s7
+     #@t290 = @t290 MUL -12345679
+mul $s0, $s0, -12345679
+     #@t291 = 12345679
+lw $s1, 1188($fp)
+li $s1, 12345679
+     #@t291 = @t291 ADD @t290
+add $s1, $s1, $s0
+     #@t292 = @t291
+lw $s2, 1192($fp)
+move $s2, $s1
+     #@t293 = 1
+lw $s3, 1196($fp)
+li $s3, 1
+     #@t293 = @t293 SUB @t292
+sub $s3, $s3, $s2
+     #@t294 = 1
+lw $s4, 1200($fp)
+li $s4, 1
+     #@t295 = int_array [ @t294 ] 
+lw $s5, 1204($fp)
+sll $t1, $s4, 2
+add $t1, $t1, $fp
+addi $t1, $t1, 8
+lw $s5, ($t1)
+     #@t296 = @t295
+lw $s6, 1208($fp)
+move $s6, $s5
+     #@t297 = @t296
+sw $s7, 1180($fp)
+lw $s7, 1212($fp)
+move $s7, $s6
+     #@t297 = @t297 ADD 1
+addi $s7, $s7, 1
+     ##push @t297
+     ##call testReturnChar
+sw $s7, 1216($fp)
+sw $s0, 1184($fp)
+sw $s1, 1188($fp)
+sw $s2, 1192($fp)
+sw $s3, 1196($fp)
+sw $s4, 1200($fp)
+sw $s5, 1204($fp)
+sw $s6, 1208($fp)
+sw $s7, 1212($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1220
+jal testReturnChar_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t298
+lw $s0, 1216($fp)
+move $s0, $v0
+     #@t299 = @t298
+lw $s1, 1220($fp)
+move $s1, $s0
+     #@t300 = @t299
+lw $s2, 1224($fp)
+move $s2, $s1
+     #char_array [ @t293 ]  = @t300
+lw $s3, 1196($fp)
+add $t1, $s3, $fp
+addi $t1, $t1, 21
+sb $s2, ($t1)
+     #@t301 = 0
+lw $s4, 1228($fp)
+li $s4, 0
+     #@t302 = char_array [ @t301 ] 
+lw $s5, 1232($fp)
+add $t1, $s4, $fp
+addi $t1, $t1, 21
+lb $s5, ($t1)
+     #@t303 = @t302
+lw $s6, 1236($fp)
+move $s6, $s5
+     #@t304 = @t303
+lw $s7, 1240($fp)
+move $s7, $s6
+     #char_temp_1 = @t304
+sw $s0, 1216($fp)
+lb $s0, 20($fp)
+move $s0, $s7
+     ##push 0
+     ##call testReturnInt
+li $t0, 0
+sw $t0, 1244($fp)
+sb $s0, 20($fp)
+sw $s1, 1220($fp)
+sw $s2, 1224($fp)
+sw $s3, 1196($fp)
+sw $s4, 1228($fp)
+sw $s5, 1232($fp)
+sw $s6, 1236($fp)
+sw $s7, 1240($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1248
+jal testReturnInt_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t305
+lw $s1, 1244($fp)
+move $s1, $v0
+     #@t306 = @t305
+lw $s2, 1248($fp)
+move $s2, $s1
+     #@t306 = @t306 MUL -12345679
+mul $s2, $s2, -12345679
+     #@t307 = 12345679
+lw $s3, 1252($fp)
+li $s3, 12345679
+     #@t307 = @t307 ADD @t306
+add $s3, $s3, $s2
+     #@t308 = @t307
+lw $s4, 1256($fp)
+move $s4, $s3
+     #@t309 = 1
+lw $s5, 1260($fp)
+li $s5, 1
+     #@t309 = @t309 SUB @t308
+sub $s5, $s5, $s4
+     #@t310 = char_array [ @t309 ] 
+lw $s6, 1264($fp)
+add $t1, $s5, $fp
+addi $t1, $t1, 21
+lb $s6, ($t1)
+     #@t311 = @t310
+lw $s7, 1268($fp)
+move $s7, $s6
+     #@t312 = @t311
+lw $s0, 1272($fp)
+move $s0, $s7
+     #char_temp_2 = @t312
+sw $s1, 1244($fp)
+lb $s1, 23($fp)
+move $s1, $s0
+     #@t313 = int_temp_1
+sw $s2, 1248($fp)
+lw $s2, 1276($fp)
+sw $s3, 1252($fp)
+lw $s3, 0($fp)
+move $s2, $s3
+     #@t314 = @t313
+sw $s4, 1256($fp)
+lw $s4, 1280($fp)
+move $s4, $s2
+     ##printf int @t314
+li $v0, 1
+move $a0, $s4
+syscall
+     #@t315 = int_temp_2
+sw $s5, 1260($fp)
+lw $s5, 1284($fp)
+sw $s6, 1264($fp)
+lw $s6, 4($fp)
+move $s5, $s6
+     #@t316 = @t315
+sw $s7, 1268($fp)
+lw $s7, 1288($fp)
+move $s7, $s5
+     ##printf int @t316
+li $v0, 1
+move $a0, $s7
+syscall
+     #@t317 = int_temp_3
+sw $s0, 1272($fp)
+lw $s0, 1292($fp)
+sb $s1, 23($fp)
+lw $s1, 16($fp)
+move $s0, $s1
+     #@t318 = @t317
+sw $s2, 1276($fp)
+lw $s2, 1296($fp)
+move $s2, $s0
+     ##printf int @t318
+li $v0, 1
+move $a0, $s2
+syscall
+     #@t319 = 0
+sw $s3, 0($fp)
+lw $s3, 1300($fp)
+li $s3, 0
+     #@t320 = int_array [ @t319 ] 
+sw $s4, 1280($fp)
+lw $s4, 1304($fp)
+sll $t1, $s3, 2
+add $t1, $t1, $fp
+addi $t1, $t1, 8
+lw $s4, ($t1)
+     #@t321 = @t320
+sw $s5, 1284($fp)
+lw $s5, 1308($fp)
+move $s5, $s4
+     #@t322 = @t321
+sw $s6, 4($fp)
+lw $s6, 1312($fp)
+move $s6, $s5
+     ##printf int @t322
+li $v0, 1
+move $a0, $s6
+syscall
+     ##push 0
+     ##call testReturnInt
+li $t0, 0
+sw $t0, 1316($fp)
+sw $s0, 1292($fp)
+sw $s1, 16($fp)
+sw $s2, 1296($fp)
+sw $s3, 1300($fp)
+sw $s4, 1304($fp)
+sw $s5, 1308($fp)
+sw $s6, 1312($fp)
+sw $s7, 1288($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1320
+jal testReturnInt_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t323
+lw $s7, 1316($fp)
+move $s7, $v0
+     #@t324 = @t323
+lw $s0, 1320($fp)
+move $s0, $s7
+     #@t324 = @t324 MUL -12345679
+mul $s0, $s0, -12345679
+     #@t325 = 12345679
+lw $s1, 1324($fp)
+li $s1, 12345679
+     #@t325 = @t325 ADD @t324
+add $s1, $s1, $s0
+     #@t326 = @t325
+lw $s2, 1328($fp)
+move $s2, $s1
+     #@t327 = 1
+lw $s3, 1332($fp)
+li $s3, 1
+     #@t327 = @t327 SUB @t326
+sub $s3, $s3, $s2
+     #@t328 = int_array [ @t327 ] 
+lw $s4, 1336($fp)
+sll $t1, $s3, 2
+add $t1, $t1, $fp
+addi $t1, $t1, 8
+lw $s4, ($t1)
+     #@t329 = @t328
+lw $s5, 1340($fp)
+move $s5, $s4
+     #@t330 = @t329
+lw $s6, 1344($fp)
+move $s6, $s5
+     ##printf int @t330
+li $v0, 1
+move $a0, $s6
+syscall
+     #@t331 = char_temp_1
+sw $s7, 1316($fp)
+lw $s7, 1348($fp)
+sw $s0, 1320($fp)
+lb $s0, 20($fp)
+move $s7, $s0
+     #@t332 = @t331
+sw $s1, 1324($fp)
+lw $s1, 1352($fp)
+move $s1, $s7
+     ##printf char @t332
+li $v0, 11
+move $a0, $s1
+syscall
+     #@t333 = char_temp_2
+sw $s2, 1328($fp)
+lw $s2, 1356($fp)
+sw $s3, 1332($fp)
+lb $s3, 23($fp)
+move $s2, $s3
+     #@t334 = @t333
+sw $s4, 1336($fp)
+lw $s4, 1360($fp)
+move $s4, $s2
+     ##printf char @t334
+li $v0, 11
+move $a0, $s4
+syscall
+     #@t335 = 0
+sw $s5, 1340($fp)
+lw $s5, 1364($fp)
+li $s5, 0
+     #@t336 = char_array [ @t335 ] 
+sw $s6, 1344($fp)
+lw $s6, 1368($fp)
+add $t1, $s5, $fp
+addi $t1, $t1, 21
+lb $s6, ($t1)
+     #@t337 = @t336
+sw $s7, 1348($fp)
+lw $s7, 1372($fp)
+move $s7, $s6
+     #@t338 = @t337
+sb $s0, 20($fp)
+lw $s0, 1376($fp)
+move $s0, $s7
+     ##printf char @t338
+li $v0, 11
+move $a0, $s0
+syscall
+     #@t339 = 1
+sw $s1, 1352($fp)
+lw $s1, 1380($fp)
+li $s1, 1
+     #@t340 = char_array [ @t339 ] 
+sw $s2, 1356($fp)
+lw $s2, 1384($fp)
+add $t1, $s1, $fp
+addi $t1, $t1, 21
+lb $s2, ($t1)
+     #@t341 = @t340
+sb $s3, 23($fp)
+lw $s3, 1388($fp)
+move $s3, $s2
+     #@t342 = @t341
+sw $s4, 1360($fp)
+lw $s4, 1392($fp)
+move $s4, $s3
+     ##printf char @t342
+li $v0, 11
+move $a0, $s4
+syscall
+     #@t343 = char_temp_1
+sw $s5, 1364($fp)
+lw $s5, 1396($fp)
+sw $s6, 1368($fp)
+lb $s6, 20($fp)
+move $s5, $s6
+     #@t344 = 0
+sw $s7, 1372($fp)
+lw $s7, 1400($fp)
+li $s7, 0
+     #@t345 = char_array [ @t344 ] 
+sw $s0, 1376($fp)
+lw $s0, 1404($fp)
+add $t1, $s7, $fp
+addi $t1, $t1, 21
+lb $s0, ($t1)
+     #@t346 = @t345
+sw $s1, 1380($fp)
+lw $s1, 1408($fp)
+move $s1, $s0
+     #@t347 = @t346
+sw $s2, 1384($fp)
+lw $s2, 1412($fp)
+move $s2, $s1
+     #@t348 = 0
+sw $s3, 1388($fp)
+lw $s3, 1416($fp)
+li $s3, 0
+     #@t349 = char_array [ @t348 ] 
+sw $s4, 1392($fp)
+lw $s4, 1420($fp)
+add $t1, $s3, $fp
+addi $t1, $t1, 21
+lb $s4, ($t1)
+     #@t350 = @t349
+sw $s5, 1396($fp)
+lw $s5, 1424($fp)
+move $s5, $s4
+     #@t350 = @t350 MUL char_temp_2
+sb $s6, 20($fp)
+lb $s6, 23($fp)
+mul $s5, $s5, $s6
+     #@t347 = @t347 ADD @t350
+add $s2, $s2, $s5
+     #@t343 = @t343 MUL @t347
+sw $s7, 1400($fp)
+lw $s7, 1396($fp)
+mul $s7, $s7, $s2
+     #@t351 = @t343
+sw $s0, 1404($fp)
+lw $s0, 1428($fp)
+move $s0, $s7
+     ##printf int @t351
+li $v0, 1
+move $a0, $s0
+syscall
+     ##ret 
+jr $ra
+     ##ret 
+jr $ra
+     #void testIO ()
+sw $s0, 1428($fp)
+sw $s1, 1408($fp)
+sw $s2, 1412($fp)
+sw $s3, 1416($fp)
+sw $s4, 1420($fp)
+sw $s5, 1424($fp)
+sb $s6, 23($fp)
+sw $s7, 1396($fp)
+testIO_label:
+     ##scanf int global_int_1
+li $v0, 5
+syscall
+lw $s1, 20($gp)
+move $s1, $v0
+     ##scanf char global_char_1
+li $v0, 12
+syscall
+lb $s2, 29($gp)
+move $s2, $v0
+     ##printf string string3
+li $v0, 4
+la $a0, string3
+syscall
+     #@t352 = global_int_1
+lw $s3, 1408($fp)
+move $s3, $s1
+     #@t353 = @t352
+lw $s4, 1412($fp)
+move $s4, $s3
+     ##printf int @t353
+li $v0, 1
+move $a0, $s4
+syscall
+     #@t354 = global_char_1
+lw $s5, 1416($fp)
+move $s5, $s2
+     #@t355 = @t354
+lw $s6, 1420($fp)
+move $s6, $s5
+     ##printf char @t355
+li $v0, 11
+move $a0, $s6
+syscall
+     ##scanf int global_int_1
+li $v0, 5
+syscall
+move $s1, $v0
+     ##scanf char global_char_1
+li $v0, 12
+syscall
+move $s2, $v0
+     #@t356 = global_int_1
+lw $s7, 1424($fp)
+move $s7, $s1
+     #@t357 = @t356
+lw $s0, 1428($fp)
+move $s0, $s7
+     ##printf string string3
+li $v0, 4
+la $a0, string3
+syscall
+     ##printf int @t357
+li $v0, 1
+move $a0, $s0
+syscall
+     #@t358 = global_char_1
+sw $s1, 20($gp)
+lw $s1, 1432($fp)
+move $s1, $s2
+     #@t359 = @t358
+sb $s2, 29($gp)
+lw $s2, 1436($fp)
+move $s2, $s1
+     ##printf char @t359
+li $v0, 11
+move $a0, $s2
+syscall
+     ##scanf char global_char_1
+li $v0, 12
+syscall
+sw $s3, 1408($fp)
+lb $s3, 29($gp)
+move $s3, $v0
+     ##scanf int global_int_1
+li $v0, 5
+syscall
+sw $s4, 1412($fp)
+lw $s4, 20($gp)
+move $s4, $v0
+     #@t360 = global_char_1
+sw $s5, 1416($fp)
+lw $s5, 1440($fp)
+move $s5, $s3
+     #@t361 = @t360
+sw $s6, 1420($fp)
+lw $s6, 1444($fp)
+move $s6, $s5
+     ##printf string string3
+li $v0, 4
+la $a0, string3
+syscall
+     ##printf char @t361
+li $v0, 11
+move $a0, $s6
+syscall
+     #@t362 = global_int_1
+sw $s7, 1424($fp)
+lw $s7, 1448($fp)
+move $s7, $s4
+     #@t363 = @t362
+sw $s0, 1428($fp)
+lw $s0, 1452($fp)
+move $s0, $s7
+     ##printf int @t363
+li $v0, 1
+move $a0, $s0
+syscall
+     ##ret 
+jr $ra
+     ##ret 
+jr $ra
+     #void testIfWhile ()
+sw $s0, 1452($fp)
+sw $s1, 1432($fp)
+sw $s2, 1436($fp)
+sb $s3, 29($gp)
+sw $s4, 20($gp)
+sw $s5, 1440($fp)
+sw $s6, 1444($fp)
+sw $s7, 1448($fp)
+testIfWhile_label:
+     ##var int i
+     ##var int j
+     ##var int k
+     ##var char a
+     ##var char b
+     ##var char c
+     ##var char d
+     #k = 10
+lw $s1, 8($fp)
+li $s1, 10
+     #a = 43
+lb $s2, 12($fp)
+li $s2, 43
+     #b = 45
+lb $s3, 13($fp)
+li $s3, 45
+     #c = 42
+lb $s4, 14($fp)
+li $s4, 42
+     #d = 47
+lb $s5, 15($fp)
+li $s5, 47
+     #@t364 = k
+lw $s6, 1472($fp)
+move $s6, $s1
+     #@t365 = @t364
+lw $s7, 1476($fp)
+move $s7, $s6
+     #@t365 = @t365 GT 0
+li $t0, 0
+sgt $s7, $s7, $t0
+     ##BZ @t365 testIfWhile_end_if0
+sw $s1, 8($fp)
+sb $s2, 12($fp)
+sb $s3, 13($fp)
+sb $s4, 14($fp)
+sb $s5, 15($fp)
+sw $s6, 1472($fp)
+sw $s7, 1476($fp)
+lw $s0, 1476($fp)
+beq $s0, $0, testIfWhile_end_if0
+nop
+     #@t366 = k
+lw $s2, 1480($fp)
+lw $s3, 8($fp)
+move $s2, $s3
+     #@t367 = @t366
+lw $s4, 1484($fp)
+move $s4, $s2
+     #@t367 = @t367 LE 10
+li $t0, 10
+sle $s4, $s4, $t0
+     ##BZ @t367 testIfWhile_end_if1
+sw $s0, 1476($fp)
+sw $s2, 1480($fp)
+sw $s3, 8($fp)
+sw $s4, 1484($fp)
+lw $s5, 1484($fp)
+beq $s5, $0, testIfWhile_end_if1
+nop
+     #i = 0
+lw $s6, 0($fp)
+li $s6, 0
+     #testIfWhile_while_begin2 :
+sw $s5, 1484($fp)
+sw $s6, 0($fp)
+testIfWhile_while_begin2:
+     #@t368 = i
+lw $s7, 1488($fp)
+lw $s0, 0($fp)
+move $s7, $s0
+     #@t369 = @t368
+lw $s1, 1492($fp)
+move $s1, $s7
+     #@t370 = k
+lw $s2, 1496($fp)
+lw $s4, 8($fp)
+move $s2, $s4
+     #@t370 = @t370 DIV 2
+div $s2, $s2, 2
+     #@t371 = @t370
+lw $s5, 1500($fp)
+move $s5, $s2
+     #@t369 = @t369 LT @t371
+slt $s1, $s1, $s5
+     ##BZ @t369 testIfWhile_while_end3
+sw $s0, 0($fp)
+sw $s1, 1492($fp)
+sw $s2, 1496($fp)
+sw $s4, 8($fp)
+sw $s5, 1500($fp)
+sw $s7, 1488($fp)
+lw $s6, 1492($fp)
+beq $s6, $0, testIfWhile_while_end3
+nop
+     #@t372 = i
+lw $s7, 1504($fp)
+lw $s1, 0($fp)
+move $s7, $s1
+     #@t373 = @t372
+lw $s2, 1508($fp)
+move $s2, $s7
+     #@t374 = i
+lw $s3, 1512($fp)
+move $s3, $s1
+     #@t374 = @t374 DIV 2
+div $s3, $s3, 2
+     #@t374 = @t374 MUL 2
+mul $s3, $s3, 2
+     #@t375 = @t374
+lw $s4, 1516($fp)
+move $s4, $s3
+     #@t376 = @t375
+lw $s5, 1520($fp)
+move $s5, $s4
+     #@t373 = @t373 SUB @t376
+sub $s2, $s2, $s5
+     ##BE @t373 0 testIfWhile_case5
+sw $s1, 0($fp)
+sw $s2, 1508($fp)
+sw $s3, 1512($fp)
+sw $s4, 1516($fp)
+sw $s5, 1520($fp)
+sw $s6, 1492($fp)
+sw $s7, 1504($fp)
+lw $s6, 1508($fp)
+beq $s6, 0, testIfWhile_case5
+nop
+     ##GOTO testIfWhile_case_over6
+sw $s6, 1508($fp)
+j testIfWhile_case_over6
+nop
+     #testIfWhile_case5 :
+testIfWhile_case5:
+     #@t377 = i
+lw $s7, 1524($fp)
+lw $s2, 0($fp)
+move $s7, $s2
+     #@t378 = @t377
+lw $s3, 1528($fp)
+move $s3, $s7
+     #@t379 = a
+lw $s4, 1532($fp)
+lb $s5, 12($fp)
+move $s4, $s5
+     #@t380 = @t379
+lw $s6, 1536($fp)
+move $s6, $s4
+     #global_char_array_3 [ @t378 ]  = @t380
+add $t1, $s3, $gp
+addi $t1, $t1, 61
+sb $s6, ($t1)
+     ##GOTO testIfWhile_switch_end4
+sw $s2, 0($fp)
+sw $s3, 1528($fp)
+sw $s4, 1532($fp)
+sb $s5, 12($fp)
+sw $s6, 1536($fp)
+sw $s7, 1524($fp)
+j testIfWhile_switch_end4
+nop
+     #testIfWhile_case_over6 :
+testIfWhile_case_over6:
+     ##BE @t373 1 testIfWhile_case7
+lw $s7, 1508($fp)
+beq $s7, 1, testIfWhile_case7
+nop
+     ##GOTO testIfWhile_case_over8
+sw $s7, 1508($fp)
+j testIfWhile_case_over8
+nop
+     #testIfWhile_case7 :
+testIfWhile_case7:
+     #@t381 = i
+lw $s3, 1540($fp)
+lw $s4, 0($fp)
+move $s3, $s4
+     #@t382 = @t381
+lw $s5, 1544($fp)
+move $s5, $s3
+     #@t383 = b
+lw $s6, 1548($fp)
+lb $s7, 13($fp)
+move $s6, $s7
+     #@t384 = @t383
+lw $s0, 1552($fp)
+move $s0, $s6
+     #global_char_array_3 [ @t382 ]  = @t384
+add $t1, $s5, $gp
+addi $t1, $t1, 61
+sb $s0, ($t1)
+     ##GOTO testIfWhile_switch_end4
+sw $s0, 1552($fp)
+sw $s3, 1540($fp)
+sw $s4, 0($fp)
+sw $s5, 1544($fp)
+sw $s6, 1548($fp)
+sb $s7, 13($fp)
+j testIfWhile_switch_end4
+nop
+     #testIfWhile_case_over8 :
+testIfWhile_case_over8:
+     #testIfWhile_switch_end4 :
+testIfWhile_switch_end4:
+     #@t385 = i
+lw $s3, 1556($fp)
+lw $s5, 0($fp)
+move $s3, $s5
+     #@t386 = @t385
+lw $s6, 1560($fp)
+move $s6, $s3
+     #@t387 = global_char_array_3 [ @t386 ] 
+lw $s7, 1564($fp)
+add $t1, $s6, $gp
+addi $t1, $t1, 61
+lb $s7, ($t1)
+     #@t388 = @t387
+lw $s0, 1568($fp)
+move $s0, $s7
+     #@t389 = @t388
+lw $s1, 1572($fp)
+move $s1, $s0
+     ##printf char @t389
+li $v0, 11
+move $a0, $s1
+syscall
+     #@t390 = i
+sw $s3, 1556($fp)
+lw $s3, 1576($fp)
+move $s3, $s5
+     #@t391 = @t390
+lw $s4, 1580($fp)
+move $s4, $s3
+     #@t391 = @t391 ADD 1
+addi $s4, $s4, 1
+     #i = @t391
+move $s5, $s4
+     ##GOTO testIfWhile_while_begin2
+sw $s0, 1568($fp)
+sw $s1, 1572($fp)
+sw $s3, 1576($fp)
+sw $s4, 1580($fp)
+sw $s5, 0($fp)
+sw $s6, 1560($fp)
+sw $s7, 1564($fp)
+j testIfWhile_while_begin2
+nop
+     #testIfWhile_while_end3 :
+testIfWhile_while_end3:
+     #testIfWhile_while_begin9 :
+testIfWhile_while_begin9:
+     #@t392 = i
+lw $s6, 1584($fp)
+lw $s7, 0($fp)
+move $s6, $s7
+     #@t393 = @t392
+lw $s0, 1588($fp)
+move $s0, $s6
+     #@t394 = k
+lw $s1, 1592($fp)
+lw $s2, 8($fp)
+move $s1, $s2
+     #@t395 = @t394
+lw $s3, 1596($fp)
+move $s3, $s1
+     #@t393 = @t393 LT @t395
+slt $s0, $s0, $s3
+     ##BZ @t393 testIfWhile_while_end10
+sw $s0, 1588($fp)
+sw $s1, 1592($fp)
+sw $s2, 8($fp)
+sw $s3, 1596($fp)
+sw $s6, 1584($fp)
+sw $s7, 0($fp)
+lw $s4, 1588($fp)
+beq $s4, $0, testIfWhile_while_end10
+nop
+     #@t396 = i
+lw $s6, 1600($fp)
+lw $s0, 0($fp)
+move $s6, $s0
+     #@t397 = @t396
+lw $s1, 1604($fp)
+move $s1, $s6
+     #@t398 = i
+lw $s2, 1608($fp)
+move $s2, $s0
+     #@t398 = @t398 DIV 2
+div $s2, $s2, 2
+     #@t398 = @t398 MUL 2
+mul $s2, $s2, 2
+     #@t399 = @t398
+lw $s3, 1612($fp)
+move $s3, $s2
+     #@t400 = @t399
+sw $s4, 1588($fp)
+lw $s4, 1616($fp)
+move $s4, $s3
+     #@t397 = @t397 SUB @t400
+sub $s1, $s1, $s4
+     ##BE @t397 0 testIfWhile_case12
+sw $s0, 0($fp)
+sw $s1, 1604($fp)
+sw $s2, 1608($fp)
+sw $s3, 1612($fp)
+sw $s4, 1616($fp)
+sw $s6, 1600($fp)
+lw $s5, 1604($fp)
+beq $s5, 0, testIfWhile_case12
+nop
+     ##GOTO testIfWhile_case_over13
+sw $s5, 1604($fp)
+j testIfWhile_case_over13
+nop
+     #testIfWhile_case12 :
+testIfWhile_case12:
+     #@t401 = i
+lw $s6, 1620($fp)
+lw $s1, 0($fp)
+move $s6, $s1
+     #@t402 = @t401
+lw $s2, 1624($fp)
+move $s2, $s6
+     #@t403 = c
+lw $s3, 1628($fp)
+lb $s4, 14($fp)
+move $s3, $s4
+     #@t404 = @t403
+lw $s5, 1632($fp)
+move $s5, $s3
+     #global_char_array_3 [ @t402 ]  = @t404
+add $t1, $s2, $gp
+addi $t1, $t1, 61
+sb $s5, ($t1)
+     ##GOTO testIfWhile_switch_end11
+sw $s1, 0($fp)
+sw $s2, 1624($fp)
+sw $s3, 1628($fp)
+sb $s4, 14($fp)
+sw $s5, 1632($fp)
+sw $s6, 1620($fp)
+j testIfWhile_switch_end11
+nop
+     #testIfWhile_case_over13 :
+testIfWhile_case_over13:
+     #testIfWhile_default14 :
+testIfWhile_default14:
+     #@t405 = i
+lw $s6, 1636($fp)
+lw $s2, 0($fp)
+move $s6, $s2
+     #@t406 = @t405
+lw $s3, 1640($fp)
+move $s3, $s6
+     #@t407 = d
+lw $s4, 1644($fp)
+lb $s5, 15($fp)
+move $s4, $s5
+     #@t408 = @t407
+sw $s6, 1636($fp)
+lw $s6, 1648($fp)
+move $s6, $s4
+     #global_char_array_3 [ @t406 ]  = @t408
+add $t1, $s3, $gp
+addi $t1, $t1, 61
+sb $s6, ($t1)
+     ##GOTO testIfWhile_switch_end11
+sw $s2, 0($fp)
+sw $s3, 1640($fp)
+sw $s4, 1644($fp)
+sb $s5, 15($fp)
+sw $s6, 1648($fp)
+j testIfWhile_switch_end11
+nop
+     #testIfWhile_switch_end11 :
+testIfWhile_switch_end11:
+     #@t409 = i
+lw $s3, 1652($fp)
+lw $s4, 0($fp)
+move $s3, $s4
+     #@t410 = @t409
+lw $s5, 1656($fp)
+move $s5, $s3
+     #@t411 = global_char_array_3 [ @t410 ] 
+lw $s6, 1660($fp)
+add $t1, $s5, $gp
+addi $t1, $t1, 61
+lb $s6, ($t1)
+     #@t412 = @t411
+lw $s7, 1664($fp)
+move $s7, $s6
+     #@t413 = @t412
+lw $s0, 1668($fp)
+move $s0, $s7
+     ##printf char @t413
+li $v0, 11
+move $a0, $s0
+syscall
+     #@t414 = i
+sw $s3, 1652($fp)
+lw $s3, 1672($fp)
+move $s3, $s4
+     #@t415 = @t414
+sw $s4, 0($fp)
+lw $s4, 1676($fp)
+move $s4, $s3
+     #@t415 = @t415 ADD 1
+addi $s4, $s4, 1
+     #i = @t415
+sw $s5, 1656($fp)
+lw $s5, 0($fp)
+move $s5, $s4
+     ##GOTO testIfWhile_while_begin9
+sw $s0, 1668($fp)
+sw $s3, 1672($fp)
+sw $s4, 1676($fp)
+sw $s5, 0($fp)
+sw $s6, 1660($fp)
+sw $s7, 1664($fp)
+j testIfWhile_while_begin9
+nop
+     #testIfWhile_while_end10 :
+testIfWhile_while_end10:
+     #testIfWhile_end_if1 :
+testIfWhile_end_if1:
+     #testIfWhile_end_if0 :
+testIfWhile_end_if0:
+     ##ret 
+jr $ra
+     ##ret 
+jr $ra
+     #void testSwitch ()
+testSwitch_label:
+     ##var int int_1
+     ##var int i
+     ##var char char_1
+     #i = 0
+lw $s6, 4($fp)
+li $s6, 0
+     #int_1 = 0
+lw $s7, 0($fp)
+li $s7, 0
+     #testSwitch_while_begin0 :
+sw $s6, 4($fp)
+sw $s7, 0($fp)
+testSwitch_while_begin0:
+     #@t416 = i
+lw $s0, 1676($fp)
+lw $s3, 4($fp)
+move $s0, $s3
+     #@t417 = @t416
+lw $s4, 1680($fp)
+move $s4, $s0
+     #@t417 = @t417 LT 3
+li $t0, 3
+slt $s4, $s4, $t0
+     ##BZ @t417 testSwitch_while_end1
+sw $s0, 1676($fp)
+sw $s3, 4($fp)
+sw $s4, 1680($fp)
+lw $s5, 1680($fp)
+beq $s5, $0, testSwitch_while_end1
+nop
+     #@t418 = int_1
+lw $s6, 1684($fp)
+lw $s0, 0($fp)
+move $s6, $s0
+     #@t419 = @t418
+lw $s1, 1688($fp)
+move $s1, $s6
+     ##BE @t419 0 testSwitch_case3
+sw $s0, 0($fp)
+sw $s1, 1688($fp)
+sw $s5, 1680($fp)
+sw $s6, 1684($fp)
+lw $s2, 1688($fp)
+beq $s2, 0, testSwitch_case3
+nop
+     ##GOTO testSwitch_case_over4
+sw $s2, 1688($fp)
+j testSwitch_case_over4
+nop
+     #testSwitch_case3 :
+testSwitch_case3:
+     #char_1 = 97
+lb $s3, 8($fp)
+li $s3, 97
+     #@t420 = char_1
+lw $s4, 1692($fp)
+move $s4, $s3
+     #@t421 = @t420
+lw $s5, 1696($fp)
+move $s5, $s4
+     ##printf char @t421
+li $v0, 11
+move $a0, $s5
+syscall
+     ##GOTO testSwitch_switch_end2
+sb $s3, 8($fp)
+sw $s4, 1692($fp)
+sw $s5, 1696($fp)
+j testSwitch_switch_end2
+nop
+     #testSwitch_case_over4 :
+testSwitch_case_over4:
+     ##BE @t419 1 testSwitch_case5
+lw $s6, 1688($fp)
+beq $s6, 1, testSwitch_case5
+nop
+     ##GOTO testSwitch_case_over6
+sw $s6, 1688($fp)
+j testSwitch_case_over6
+nop
+     #testSwitch_case5 :
+testSwitch_case5:
+     #char_1 = 98
+lb $s7, 8($fp)
+li $s7, 98
+     #@t422 = char_1
+lw $s0, 1700($fp)
+move $s0, $s7
+     #@t423 = @t422
+lw $s1, 1704($fp)
+move $s1, $s0
+     ##printf char @t423
+li $v0, 11
+move $a0, $s1
+syscall
+     ##GOTO testSwitch_switch_end2
+sw $s0, 1700($fp)
+sw $s1, 1704($fp)
+sb $s7, 8($fp)
+j testSwitch_switch_end2
+nop
+     #testSwitch_case_over6 :
+testSwitch_case_over6:
+     #testSwitch_default7 :
+testSwitch_default7:
+     #char_1 = 95
+lb $s2, 8($fp)
+li $s2, 95
+     #@t424 = char_1
+lw $s4, 1708($fp)
+move $s4, $s2
+     #@t425 = @t424
+lw $s5, 1712($fp)
+move $s5, $s4
+     ##printf char @t425
+li $v0, 11
+move $a0, $s5
+syscall
+     ##GOTO testSwitch_switch_end2
+sb $s2, 8($fp)
+sw $s4, 1708($fp)
+sw $s5, 1712($fp)
+j testSwitch_switch_end2
+nop
+     #testSwitch_switch_end2 :
+testSwitch_switch_end2:
+     #@t426 = char_1
+lw $s6, 1716($fp)
+lb $s0, 8($fp)
+move $s6, $s0
+     #@t427 = @t426
+lw $s1, 1720($fp)
+move $s1, $s6
+     ##BE @t427 97 testSwitch_case9
+sb $s0, 8($fp)
+sw $s1, 1720($fp)
+sw $s6, 1716($fp)
+lw $s2, 1720($fp)
+beq $s2, 97, testSwitch_case9
+nop
+     ##GOTO testSwitch_case_over10
+sw $s2, 1720($fp)
+j testSwitch_case_over10
+nop
+     #testSwitch_case9 :
+testSwitch_case9:
+     #@t428 = i
+lw $s3, 1724($fp)
+lw $s4, 4($fp)
+move $s3, $s4
+     #@t429 = @t428
+lw $s5, 1728($fp)
+move $s5, $s3
+     #@t429 = @t429 ADD 1
+addi $s5, $s5, 1
+     #int_1 = @t429
+lw $s6, 0($fp)
+move $s6, $s5
+     #@t430 = int_1
+lw $s7, 1732($fp)
+move $s7, $s6
+     #@t431 = @t430
+lw $s0, 1736($fp)
+move $s0, $s7
+     ##printf int @t431
+li $v0, 1
+move $a0, $s0
+syscall
+     ##GOTO testSwitch_switch_end8
+sw $s0, 1736($fp)
+sw $s3, 1724($fp)
+sw $s4, 4($fp)
+sw $s5, 1728($fp)
+sw $s6, 0($fp)
+sw $s7, 1732($fp)
+j testSwitch_switch_end8
+nop
+     #testSwitch_case_over10 :
+testSwitch_case_over10:
+     ##BE @t427 98 testSwitch_case11
+lw $s1, 1720($fp)
+beq $s1, 98, testSwitch_case11
+nop
+     ##GOTO testSwitch_case_over12
+sw $s1, 1720($fp)
+j testSwitch_case_over12
+nop
+     #testSwitch_case11 :
+testSwitch_case11:
+     #int_1 = 3
+lw $s2, 0($fp)
+li $s2, 3
+     #@t432 = int_1
+lw $s3, 1740($fp)
+move $s3, $s2
+     #@t433 = @t432
+lw $s4, 1744($fp)
+move $s4, $s3
+     ##printf int @t433
+li $v0, 1
+move $a0, $s4
+syscall
+     ##GOTO testSwitch_switch_end8
+sw $s2, 0($fp)
+sw $s3, 1740($fp)
+sw $s4, 1744($fp)
+j testSwitch_switch_end8
+nop
+     #testSwitch_case_over12 :
+testSwitch_case_over12:
+     #testSwitch_switch_end8 :
+testSwitch_switch_end8:
+     #@t434 = i
+lw $s5, 1748($fp)
+lw $s6, 4($fp)
+move $s5, $s6
+     #@t435 = @t434
+lw $s7, 1752($fp)
+move $s7, $s5
+     #@t435 = @t435 ADD 1
+addi $s7, $s7, 1
+     #i = @t435
+move $s6, $s7
+     ##GOTO testSwitch_while_begin0
+sw $s5, 1748($fp)
+sw $s6, 4($fp)
+sw $s7, 1752($fp)
+j testSwitch_while_begin0
+nop
+     #testSwitch_while_end1 :
+testSwitch_while_end1:
+     ##ret 
+jr $ra
+     ##ret 
+jr $ra
+     #int func_ret_int_1 ()
+func_ret_int_1_label:
+     ##para int i_1
+lw $s0, 0($fp)
+lw $s0, -4($fp)
+     ##para int i_2
+lw $s1, 4($fp)
+lw $s1, -8($fp)
+     ##para char c_1
+lb $s2, 8($fp)
+lw $s2, -12($fp)
+     ##para char c_2
+lb $s3, 9($fp)
+lw $s3, -16($fp)
+     ##var int i_temp
+     ##var char c_temp
+     ##printf string string4
+li $v0, 4
+la $a0, string4
+syscall
+     #@t436 = i_1
+lw $s4, 1760($fp)
+move $s4, $s0
+     #@t437 = @t436
+lw $s5, 1764($fp)
+move $s5, $s4
+     ##printf int @t437
+li $v0, 1
+move $a0, $s5
+syscall
+     #@t438 = i_2
+lw $s6, 1768($fp)
+move $s6, $s1
+     #@t439 = @t438
+lw $s7, 1772($fp)
+move $s7, $s6
+     ##printf int @t439
+li $v0, 1
+move $a0, $s7
+syscall
+     #@t440 = c_1
+sw $s0, 0($fp)
+lw $s0, 1776($fp)
+move $s0, $s2
+     #@t441 = @t440
+sw $s1, 4($fp)
+lw $s1, 1780($fp)
+move $s1, $s0
+     ##printf char @t441
+li $v0, 11
+move $a0, $s1
+syscall
+     #@t442 = c_2
+sb $s2, 8($fp)
+lw $s2, 1784($fp)
+move $s2, $s3
+     #@t443 = @t442
+sb $s3, 9($fp)
+lw $s3, 1788($fp)
+move $s3, $s2
+     ##printf char @t443
+li $v0, 11
+move $a0, $s3
+syscall
+     #@t444 = i_1
+sw $s4, 1760($fp)
+lw $s4, 1792($fp)
+sw $s5, 1764($fp)
+lw $s5, 0($fp)
+move $s4, $s5
+     #@t445 = @t444
+sw $s6, 1768($fp)
+lw $s6, 1796($fp)
+move $s6, $s4
+     #i_temp = @t445
+sw $s7, 1772($fp)
+lw $s7, 12($fp)
+move $s7, $s6
+     #@t446 = i_2
+sw $s0, 1776($fp)
+lw $s0, 1800($fp)
+sw $s1, 1780($fp)
+lw $s1, 4($fp)
+move $s0, $s1
+     #@t447 = @t446
+sw $s2, 1784($fp)
+lw $s2, 1804($fp)
+move $s2, $s0
+     #i_1 = @t447
+move $s5, $s2
+     #@t448 = i_temp
+sw $s3, 1788($fp)
+lw $s3, 1808($fp)
+move $s3, $s7
+     #@t449 = @t448
+sw $s4, 1792($fp)
+lw $s4, 1812($fp)
+move $s4, $s3
+     #i_2 = @t449
+move $s1, $s4
+     #@t450 = c_1
+sw $s5, 0($fp)
+lw $s5, 1816($fp)
+sw $s6, 1796($fp)
+lb $s6, 8($fp)
+move $s5, $s6
+     #@t451 = @t450
+sw $s7, 12($fp)
+lw $s7, 1820($fp)
+move $s7, $s5
+     #c_temp = @t451
+sw $s0, 1800($fp)
+lb $s0, 10($fp)
+move $s0, $s7
+     #@t452 = c_2
+sw $s1, 4($fp)
+lw $s1, 1824($fp)
+sw $s2, 1804($fp)
+lb $s2, 9($fp)
+move $s1, $s2
+     #@t453 = @t452
+sw $s3, 1808($fp)
+lw $s3, 1828($fp)
+move $s3, $s1
+     #c_1 = @t453
+move $s6, $s3
+     #@t454 = c_temp
+sw $s4, 1812($fp)
+lw $s4, 1832($fp)
+move $s4, $s0
+     #@t455 = @t454
+sw $s5, 1816($fp)
+lw $s5, 1836($fp)
+move $s5, $s4
+     #c_2 = @t455
+move $s2, $s5
+     ##printf string string5
+li $v0, 4
+la $a0, string5
+syscall
+     #@t456 = i_1
+sb $s6, 8($fp)
+lw $s6, 1840($fp)
+sw $s7, 1820($fp)
+lw $s7, 0($fp)
+move $s6, $s7
+     #@t457 = @t456
+sb $s0, 10($fp)
+lw $s0, 1844($fp)
+move $s0, $s6
+     ##printf int @t457
+li $v0, 1
+move $a0, $s0
+syscall
+     #@t458 = i_2
+sw $s1, 1824($fp)
+lw $s1, 1848($fp)
+sb $s2, 9($fp)
+lw $s2, 4($fp)
+move $s1, $s2
+     #@t459 = @t458
+sw $s3, 1828($fp)
+lw $s3, 1852($fp)
+move $s3, $s1
+     ##printf int @t459
+li $v0, 1
+move $a0, $s3
+syscall
+     #@t460 = c_1
+sw $s4, 1832($fp)
+lw $s4, 1856($fp)
+sw $s5, 1836($fp)
+lb $s5, 8($fp)
+move $s4, $s5
+     #@t461 = @t460
+sw $s6, 1840($fp)
+lw $s6, 1860($fp)
+move $s6, $s4
+     ##printf char @t461
+li $v0, 11
+move $a0, $s6
+syscall
+     #@t462 = c_2
+sw $s7, 0($fp)
+lw $s7, 1864($fp)
+sw $s0, 1844($fp)
+lb $s0, 9($fp)
+move $s7, $s0
+     #@t463 = @t462
+sw $s1, 1848($fp)
+lw $s1, 1868($fp)
+move $s1, $s7
+     ##printf char @t463
+li $v0, 11
+move $a0, $s1
+syscall
+     #@t464 = i_1
+sw $s2, 4($fp)
+lw $s2, 1872($fp)
+sw $s3, 1852($fp)
+lw $s3, 0($fp)
+move $s2, $s3
+     #@t465 = @t464
+sw $s4, 1856($fp)
+lw $s4, 1876($fp)
+move $s4, $s2
+     ##ret @t465
+move $v0, $s4
+jr $ra
+     ##ret 0
+li $v0, 0
+jr $ra
+     #void testPara ()
+sb $s0, 9($fp)
+sw $s1, 1868($fp)
+sw $s2, 1872($fp)
+sw $s3, 0($fp)
+sw $s4, 1876($fp)
+sb $s5, 8($fp)
+sw $s6, 1860($fp)
+sw $s7, 1864($fp)
+testPara_label:
+     ##var int i
+     ##var int j
+     ##var char c
+     ##var char d
+     #i = 12345679
+lw $s5, 0($fp)
+li $s5, 12345679
+     #j = -12345679
+lw $s6, 4($fp)
+li $s6, -12345679
+     #c = 65
+lb $s7, 8($fp)
+li $s7, 65
+     #d = 90
+lb $s0, 9($fp)
+li $s0, 90
+     #@t466 = i
+lw $s1, 1876($fp)
+move $s1, $s5
+     #@t467 = @t466
+lw $s2, 1880($fp)
+move $s2, $s1
+     ##push @t467
+     #@t468 = j
+lw $s3, 1884($fp)
+move $s3, $s6
+     #@t469 = @t468
+lw $s4, 1888($fp)
+move $s4, $s3
+     ##push @t469
+     #@t470 = c
+sw $s5, 0($fp)
+lw $s5, 1892($fp)
+move $s5, $s7
+     #@t471 = @t470
+sw $s6, 4($fp)
+lw $s6, 1896($fp)
+move $s6, $s5
+     ##push @t471
+     #@t472 = d
+sb $s7, 8($fp)
+lw $s7, 1900($fp)
+move $s7, $s0
+     #@t473 = @t472
+sb $s0, 9($fp)
+lw $s0, 1904($fp)
+move $s0, $s7
+     ##push @t473
+     ##call func_ret_int_1
+sw $s0, 1908($fp)
+sw $s6, 1912($fp)
+sw $s4, 1916($fp)
+sw $s2, 1920($fp)
+sw $s0, 1904($fp)
+sw $s1, 1876($fp)
+sw $s2, 1880($fp)
+sw $s3, 1884($fp)
+sw $s4, 1888($fp)
+sw $s5, 1892($fp)
+sw $s6, 1896($fp)
+sw $s7, 1900($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1924
+jal func_ret_int_1_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t474
+lw $s1, 1908($fp)
+move $s1, $v0
+     #@t475 = @t474
+lw $s2, 1912($fp)
+move $s2, $s1
+     #@t476 = @t475
+lw $s3, 1916($fp)
+move $s3, $s2
+     ##printf int @t476
+li $v0, 1
+move $a0, $s3
+syscall
+     ##ret 
+jr $ra
+     ##ret 
+jr $ra
+     #void testRecursion ()
+sw $s1, 1908($fp)
+sw $s2, 1912($fp)
+sw $s3, 1916($fp)
+testRecursion_label:
+     ##push 2
+     ##call fac
+li $t0, 2
+sw $t0, 0($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 4
+jal fac_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t477
+lw $s4, 1908($fp)
+move $s4, $v0
+     #@t478 = @t477
+lw $s5, 1912($fp)
+move $s5, $s4
+     ##push 3
+     ##call fac
+li $t0, 3
+sw $t0, 1916($fp)
+sw $s4, 1908($fp)
+sw $s5, 1912($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1920
+jal fac_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t479
+lw $s6, 1916($fp)
+move $s6, $v0
+     #@t478 = @t478 MUL @t479
+lw $s7, 1912($fp)
+mul $s7, $s7, $s6
+     #@t480 = @t478
+lw $s0, 1920($fp)
+move $s0, $s7
+     ##push @t480
+     ##call Fibonacci
+sw $s0, 1924($fp)
+sw $s0, 1920($fp)
+sw $s6, 1916($fp)
+sw $s7, 1912($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1928
+jal Fibonacci_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t481
+lw $s1, 1924($fp)
+move $s1, $v0
+     #@t482 = @t481
+lw $s2, 1928($fp)
+move $s2, $s1
+     #@t483 = @t482
+lw $s3, 1932($fp)
+move $s3, $s2
+     ##push 3
+     ##call Fibonacci
+li $t0, 3
+sw $t0, 1936($fp)
+sw $s1, 1924($fp)
+sw $s2, 1928($fp)
+sw $s3, 1932($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1940
+jal Fibonacci_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t484
+lw $s4, 1936($fp)
+move $s4, $v0
+     #@t485 = @t484
+lw $s5, 1940($fp)
+move $s5, $s4
+     #@t486 = @t485
+lw $s6, 1944($fp)
+move $s6, $s5
+     ##push 4
+     ##call Fibonacci
+li $t0, 4
+sw $t0, 1948($fp)
+sw $s4, 1936($fp)
+sw $s5, 1940($fp)
+sw $s6, 1944($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1952
+jal Fibonacci_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t487
+lw $s7, 1948($fp)
+move $s7, $v0
+     #@t488 = @t487
+lw $s0, 1952($fp)
+move $s0, $s7
+     #@t486 = @t486 ADD @t488
+lw $s1, 1944($fp)
+add $s1, $s1, $s0
+     ##push @t486
+     ##call fac
+sw $s1, 1956($fp)
+sw $s0, 1952($fp)
+sw $s1, 1944($fp)
+sw $s7, 1948($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1960
+jal fac_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t489
+lw $s2, 1956($fp)
+move $s2, $v0
+     #@t490 = @t489
+lw $s3, 1960($fp)
+move $s3, $s2
+     #@t483 = @t483 SUB @t490
+lw $s4, 1932($fp)
+sub $s4, $s4, $s3
+     #@t491 = @t483
+lw $s5, 1964($fp)
+move $s5, $s4
+     ##push 2
+     ##call Fibonacci
+li $t0, 2
+sw $t0, 1968($fp)
+sw $s2, 1956($fp)
+sw $s3, 1960($fp)
+sw $s4, 1932($fp)
+sw $s5, 1964($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1972
+jal Fibonacci_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t492
+lw $s6, 1968($fp)
+move $s6, $v0
+     #@t493 = @t492
+lw $s7, 1972($fp)
+move $s7, $s6
+     #@t494 = @t493
+lw $s0, 1976($fp)
+move $s0, $s7
+     ##push 3
+     ##call Fibonacci
+li $t0, 3
+sw $t0, 1980($fp)
+sw $s0, 1976($fp)
+sw $s6, 1968($fp)
+sw $s7, 1972($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1984
+jal Fibonacci_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t495
+lw $s1, 1980($fp)
+move $s1, $v0
+     #@t496 = @t495
+lw $s2, 1984($fp)
+move $s2, $s1
+     #@t494 = @t494 ADD @t496
+lw $s3, 1976($fp)
+add $s3, $s3, $s2
+     ##push @t494
+     ##call fac
+sw $s3, 1988($fp)
+sw $s1, 1980($fp)
+sw $s2, 1984($fp)
+sw $s3, 1976($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 1992
+jal fac_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##get @t497
+lw $s4, 1988($fp)
+move $s4, $v0
+     #@t491 = @t491 DIV @t497
+lw $s6, 1964($fp)
+div $s6, $s6, $s4
+     #@t498 = @t491
+lw $s7, 1992($fp)
+move $s7, $s6
+     ##push @t498
+     ##push 97
+     ##push 98
+     ##push 99
+     ##call hanoi
+li $t0, 99
+sw $t0, 1996($fp)
+li $t0, 98
+sw $t0, 2000($fp)
+li $t0, 97
+sw $t0, 2004($fp)
+sw $s7, 2008($fp)
+sw $s4, 1988($fp)
+sw $s6, 1964($fp)
+sw $s7, 1992($fp)
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 2012
+jal hanoi_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##ret 
+jr $ra
+     ##ret 
+jr $ra
+     #void main ()
+main_label:
+     ##printf string string6
+li $v0, 4
+la $a0, string6
+syscall
+     ##printf string string7
+li $v0, 4
+la $a0, string7
+syscall
+     ##call testRecursion
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 0
+jal testRecursion_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##printf string string6
+li $v0, 4
+la $a0, string6
+syscall
+     ##printf string string8
+li $v0, 4
+la $a0, string8
+syscall
+     ##call testGlobal
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 0
+jal testGlobal_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##printf string string6
+li $v0, 4
+la $a0, string6
+syscall
+     ##printf string string9
+li $v0, 4
+la $a0, string9
+syscall
+     ##call testReturn
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 0
+jal testReturn_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##printf string string6
+li $v0, 4
+la $a0, string6
+syscall
+     ##printf string string10
+li $v0, 4
+la $a0, string10
+syscall
+     ##call testIO
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 0
+jal testIO_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##printf string string6
+li $v0, 4
+la $a0, string6
+syscall
+     ##printf string string11
+li $v0, 4
+la $a0, string11
+syscall
+     ##call testAssignAndExp
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 0
+jal testAssignAndExp_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##printf string string6
+li $v0, 4
+la $a0, string6
+syscall
+     ##printf string string12
+li $v0, 4
+la $a0, string12
+syscall
+     ##call testIfWhile
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 0
+jal testIfWhile_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##printf string string6
+li $v0, 4
+la $a0, string6
+syscall
+     ##printf string string13
+li $v0, 4
+la $a0, string13
+syscall
+     ##call testSwitch
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 0
+jal testSwitch_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##printf string string6
+li $v0, 4
+la $a0, string6
+syscall
+     ##printf string string14
+li $v0, 4
+la $a0, string14
+syscall
+     ##call testPara
+addi $sp, $sp, -8
+sw $ra, 0($sp)
+sw $fp, 4($sp)
+addi $fp, $fp, 0
+jal testPara_label
+nop
+lw $ra, 0($sp)
+lw $fp, 4($sp)
+addi $sp, $sp, 8
+     ##printf string string6
+li $v0, 4
+la $a0, string6
+syscall
+     ##ret 
+jr $ra
+     ##ret 
+jr $ra
